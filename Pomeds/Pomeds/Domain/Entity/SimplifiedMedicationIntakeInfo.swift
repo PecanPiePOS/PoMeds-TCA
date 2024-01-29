@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftData
 
 /**
  나중에 추후 업데이트 시에 추가
