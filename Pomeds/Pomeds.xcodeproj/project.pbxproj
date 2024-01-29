@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		589219E02B678769001B3ED4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219DF2B678769001B3ED4 /* UseCase.swift */; };
+		589219E22B678784001B3ED4 /* SomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E12B678784001B3ED4 /* SomeFeature.swift */; };
 		58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D5C2B611E9000FB92CC /* PomedsApp.swift */; };
 		58A65D5F2B611E9000FB92CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D5E2B611E9000FB92CC /* ContentView.swift */; };
 		58A65D612B611E9000FB92CC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D602B611E9000FB92CC /* Item.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		589219DF2B678769001B3ED4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		589219E12B678784001B3ED4 /* SomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeFeature.swift; sourceTree = "<group>"; };
 		58A65D592B611E9000FB92CC /* Pomeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A65D5C2B611E9000FB92CC /* PomedsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsApp.swift; sourceTree = "<group>"; };
 		58A65D5E2B611E9000FB92CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +83,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		589219D72B678634001B3ED4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				58A65D5C2B611E9000FB92CC /* PomedsApp.swift */,
+				58A65D672B611E9400FB92CC /* Pomeds.entitlements */,
+				58A65D682B611E9400FB92CC /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		589219D82B678639001B3ED4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				589219DE2B678758001B3ED4 /* UseCase */,
+				589219DD2B67874E001B3ED4 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		589219D92B6786B5001B3ED4 /* Presentaion */ = {
+			isa = PBXGroup;
+			children = (
+				589219DB2B6786C6001B3ED4 /* Features */,
+				589219DA2B6786C2001B3ED4 /* Views */,
+			);
+			path = Presentaion;
+			sourceTree = "<group>";
+		};
+		589219DA2B6786C2001B3ED4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58A65D5E2B611E9000FB92CC /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		589219DB2B6786C6001B3ED4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				589219E12B678784001B3ED4 /* SomeFeature.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		589219DC2B6786D8001B3ED4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				58A65D622B611E9400FB92CC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		589219DD2B67874E001B3ED4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				58A65D602B611E9000FB92CC /* Item.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		589219DE2B678758001B3ED4 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				589219DF2B678769001B3ED4 /* UseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		58A65D502B611E9000FB92CC = {
 			isa = PBXGroup;
 			children = (
@@ -102,12 +174,10 @@
 		58A65D5B2B611E9000FB92CC /* Pomeds */ = {
 			isa = PBXGroup;
 			children = (
-				58A65D5C2B611E9000FB92CC /* PomedsApp.swift */,
-				58A65D5E2B611E9000FB92CC /* ContentView.swift */,
-				58A65D602B611E9000FB92CC /* Item.swift */,
-				58A65D622B611E9400FB92CC /* Assets.xcassets */,
-				58A65D672B611E9400FB92CC /* Pomeds.entitlements */,
-				58A65D682B611E9400FB92CC /* Info.plist */,
+				589219D72B678634001B3ED4 /* App */,
+				589219D82B678639001B3ED4 /* Domain */,
+				589219D92B6786B5001B3ED4 /* Presentaion */,
+				589219DC2B6786D8001B3ED4 /* Resources */,
 				58A65D642B611E9400FB92CC /* Preview Content */,
 			);
 			path = Pomeds;
@@ -278,6 +348,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				58A65D5F2B611E9000FB92CC /* ContentView.swift in Sources */,
+				589219E22B678784001B3ED4 /* SomeFeature.swift in Sources */,
+				589219E02B678769001B3ED4 /* UseCase.swift in Sources */,
 				58A65D612B611E9000FB92CC /* Item.swift in Sources */,
 				58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */,
 			);
@@ -440,14 +512,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Pomeds/Pomeds.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Pomeds/App/Pomeds.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pomeds/Preview Content\"";
 				DEVELOPMENT_TEAM = 98TYR8WM82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Pomeds/Info.plist;
+				INFOPLIST_FILE = Pomeds/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PoMeds;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -461,7 +533,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.product.Pomeds;
+				PRODUCT_BUNDLE_IDENTIFIER = com.product.tca.pomeds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -478,14 +550,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Pomeds/Pomeds.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Pomeds/App/Pomeds.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pomeds/Preview Content\"";
 				DEVELOPMENT_TEAM = 98TYR8WM82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Pomeds/Info.plist;
+				INFOPLIST_FILE = Pomeds/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PoMeds;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -499,7 +571,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.product.Pomeds;
+				PRODUCT_BUNDLE_IDENTIFIER = com.product.tca.pomeds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
