@@ -9,6 +9,12 @@ import Foundation
 
 import RealmSwift
 
+/**
+ 
+ NOT BEING USE
+ - Will Be Back
+ 
+ */
 protocol LocalDataSource {
     associatedtype Request
     associatedtype Response
