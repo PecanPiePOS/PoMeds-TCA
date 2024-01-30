@@ -15,6 +15,7 @@ import RealmSwift
  - parameter manufacturer: - (Optional) 제조 회사
  */
 struct MedicationRecord {
+    var isTakingNow: Bool
     var reasonForMedication: String
     var startDate: Date
     var endDate: Date
@@ -22,6 +23,7 @@ struct MedicationRecord {
     var manufacturer: String?
     var efficacy: String
     var sideEffects: [String]
+    var medicationType: String
 }
 
 /**
@@ -37,8 +39,13 @@ final class MedicationRecordItem: Object {
     @Persisted var manufacturer: String?
     @Persisted var efficacy: String
     @Persisted var sideEffects: List<String>
+    /// 약과 영양제 타입 총 2가지로 나뉩니다.
+    /// enum MedicationType:
+    /// - medication
+    /// - supplements
+    @Persisted var medicationType: String
     
-    convenience init(isTakingNow: Bool, reasonForMedication: String, startDate: Date, endDate: Date, pillName: String, manufacturer: String? = nil, efficacy: String, sideEffects: [String]) {
+    convenience init(isTakingNow: Bool, reasonForMedication: String, startDate: Date, endDate: Date, pillName: String, manufacturer: String? = nil, efficacy: String, sideEffects: List<String>, medicationType: String) {
         self.init()
         
         self.isTakingNow = isTakingNow
@@ -48,11 +55,21 @@ final class MedicationRecordItem: Object {
         self.pillName = pillName
         self.manufacturer = manufacturer
         self.efficacy = efficacy
-        
-        var sideEffectsList: List<String> = List()
-        for sideEffect in sideEffects {
-            sideEffectsList.append(sideEffect)
+        self.sideEffects = sideEffects
+        self.medicationType = medicationType
+    }
+}
+
+enum MedicationType {
+    case medication
+    case supplements
+    
+    var stringRequest: String {
+        switch self {
+        case .medication:
+            return "med"
+        case .supplements:
+            return "supl"
         }
-        self.sideEffects = sideEffectsList
     }
 }

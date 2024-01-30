@@ -7,6 +7,12 @@
 
 import Foundation
 
+/**
+ 
+ NOT BEING USE
+ - Will Be Back
+ 
+ */
 protocol Repository {
     associatedtype Request
     associatedtype Response

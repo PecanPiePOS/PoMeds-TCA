@@ -15,18 +15,14 @@ import RealmSwift
  - Will Be Back
  
  */
-struct OngoingMedicationDataSource: LocalDataSource {
+struct OngoingMedicationDataSource {
     
-    typealias Request = Bool
-    typealias Response = MedicationRecordItem
-
+    static let shared = OngoingMedicationDataSource()
     private let realm = try! Realm()
-    
-    private init() {}
-    
+        
     func list(request: Bool) async throws -> [MedicationRecordItem] {
-        var list: [Response] = []
-        realm.objects(Response.self)
+        var list: [MedicationRecordItem] = []
+        realm.objects(MedicationRecordItem.self)
             .filter {$0.isTakingNow == request}
             .forEach {
             list.append($0)
@@ -47,7 +43,7 @@ struct OngoingMedicationDataSource: LocalDataSource {
     }
     
     func delete(id: ObjectId) async throws -> Bool {
-        let deletingItem = realm.objects(Response.self).filter {$0._id == id}
+        let deletingItem = realm.objects(MedicationRecordItem.self).filter {$0._id == id}
         do {
             try realm.write {
                 realm.delete(deletingItem)

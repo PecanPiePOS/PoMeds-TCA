@@ -10,41 +10,40 @@ import SwiftUI
 import ComposableArchitecture
 
 struct HomeView: View {
-    private let store: StoreOf<HomeReducer>
-    @ObservedObject private var viewStore: ViewStoreOf<HomeReducer>
     
-    init(store: StoreOf<HomeReducer>) {
-        self.store = store
-        self.viewStore = ViewStore(self.store, observe: { $0 })
-    }
     
     var body: some View {
-        NavigationStackStore(self.store.scope(state: \.path, action: \.path)) {
-            VStack {
-                
-            }
-        } destination: { pathState in
-            switch pathState {
-            case .registerNewMedicationScene:
-                CaseLet(\HomeReducer.Path.State.registerNewMedicationScene, action: HomeReducer.Path.Action.registerNewMedication, then: <#T##(Store<CaseState, CaseAction>) -> View##(Store<CaseState, CaseAction>) -> View##(_ store: Store<CaseState, CaseAction>) -> View#>)
-            case .listOfOngoingMedicationScene:
-            case .listOfPastMedicationScene:
-            case .myPageScene:
-            case .manageSideEffectsScene:
-            }
-        }
-        .toolbarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    Image("logoLight")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                    Text("PoMeds")
-                        .font(.largeTitle)
-                }
-            }
-        }
+
+//        NavigationStackStore(self.store.scope(state: \.path, action: \.path)) {
+//            VStack {
+//                Text("--")
+//            }
+//        } destination: { pathState in
+//            switch pathState {
+//            case .registerNewMedicationScene:
+//                CaseLet(\HomeReducer.Path.State.registerNewMedicationScene, action: HomeReducer.Path.Action.registerNewMedication, then: RegisterNewMedicationView())
+//            case .listOfOngoingMedicationScene:
+//                CaseLet(\HomeReducer.Path.State.listOfOngoingMedicationScene, action: HomeReducer.Path.Action.listOfOngoingMedication, then: RegisterNewMedicationView())
+//            case .listOfPastMedicationScene:
+//                CaseLet(\HomeReducer.Path.State.listOfPastMedicationScene, action: HomeReducer.Path.Action.listOfPastMedication, then: RegisterNewMedicationView())
+//            case .myPageScene:
+//                CaseLet(\HomeReducer.Path.State.myPageScene, action: HomeReducer.Path.Action.myPage, then: RegisterNewMedicationView())
+//            case .manageSideEffectsScene:
+//                CaseLet(\HomeReducer.Path.State.manageSideEffectsScene, action: HomeReducer.Path.Action.manageSideEffects, then: RegisterNewMedicationView())
+//            }
+//        }
+//        .toolbarTitleDisplayMode(.large)
+//        .toolbar {
+//            ToolbarItem(placement: .principal) {
+//                HStack {
+//                    Image("logoLight")
+//                        .resizable()
+//                        .frame(width: 24, height: 24)
+//                    Text("PoMeds")
+//                        .font(.largeTitle)
+//                }
+//            }
+//        }
     }
 }
 

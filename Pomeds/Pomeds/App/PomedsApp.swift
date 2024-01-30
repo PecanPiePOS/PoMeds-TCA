@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-import SwiftData
+
+import ComposableArchitecture
 
 @main
 struct PomedsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
