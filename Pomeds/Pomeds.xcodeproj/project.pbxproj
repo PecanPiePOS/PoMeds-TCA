@@ -7,11 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		589219E02B678769001B3ED4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219DF2B678769001B3ED4 /* UseCase.swift */; };
-		589219E22B678784001B3ED4 /* SomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E12B678784001B3ED4 /* SomeFeature.swift */; };
+		589219E72B678F6B001B3ED4 /* MedicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E62B678F6B001B3ED4 /* MedicationRecord.swift */; };
+		589219E92B679109001B3ED4 /* MedicationIntakeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */; };
+		589219EB2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */; };
+		589219ED2B679453001B3ED4 /* PushNotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219EC2B679453001B3ED4 /* PushNotificationInfo.swift */; };
+		589219F32B679B63001B3ED4 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F22B679B63001B3ED4 /* UseCase.swift */; };
+		589219F52B679BBF001B3ED4 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F42B679BBF001B3ED4 /* Interactor.swift */; };
+		589219F72B679C10001B3ED4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F62B679C10001B3ED4 /* Repository.swift */; };
+		589219F92B679D15001B3ED4 /* OngoingMedicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F82B679D15001B3ED4 /* OngoingMedicationRepository.swift */; };
+		589219FE2B679F5D001B3ED4 /* SomeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219FD2B679F5D001B3ED4 /* SomeNetworkService.swift */; };
+		58921A022B679F79001B3ED4 /* SomeNetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A012B679F79001B3ED4 /* SomeNetworkDataSource.swift */; };
+		58921A042B679F9A001B3ED4 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A032B679F9A001B3ED4 /* LocalDataSource.swift */; };
+		58921A062B67A373001B3ED4 /* OngoingMedicationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A052B67A373001B3ED4 /* OngoingMedicationDataSource.swift */; };
+		58921A092B67CAC4001B3ED4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 58921A082B67CAC4001B3ED4 /* Realm */; };
+		58921A0B2B67CAC4001B3ED4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58921A0A2B67CAC4001B3ED4 /* RealmSwift */; };
+		58921A102B680EA7001B3ED4 /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */; };
+		58921A122B68CBBD001B3ED4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A112B68CBBD001B3ED4 /* HomeView.swift */; };
+		58921A152B68D060001B3ED4 /* RegisterNewMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */; };
+		58921A182B6910B8001B3ED4 /* OngoingMedicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */; };
 		58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D5C2B611E9000FB92CC /* PomedsApp.swift */; };
-		58A65D5F2B611E9000FB92CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D5E2B611E9000FB92CC /* ContentView.swift */; };
-		58A65D612B611E9000FB92CC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D602B611E9000FB92CC /* Item.swift */; };
 		58A65D632B611E9400FB92CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58A65D622B611E9400FB92CC /* Assets.xcassets */; };
 		58A65D662B611E9400FB92CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58A65D652B611E9400FB92CC /* Preview Assets.xcassets */; };
 		58A65D722B611E9400FB92CC /* PomedsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D712B611E9400FB92CC /* PomedsTests.swift */; };
@@ -39,12 +53,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		589219DF2B678769001B3ED4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
-		589219E12B678784001B3ED4 /* SomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeFeature.swift; sourceTree = "<group>"; };
+		589219E62B678F6B001B3ED4 /* MedicationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationRecord.swift; sourceTree = "<group>"; };
+		589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationIntakeInfo.swift; sourceTree = "<group>"; };
+		589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplifiedMedicationIntakeInfo.swift; sourceTree = "<group>"; };
+		589219EC2B679453001B3ED4 /* PushNotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationInfo.swift; sourceTree = "<group>"; };
+		589219F22B679B63001B3ED4 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		589219F42B679BBF001B3ED4 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		589219F62B679C10001B3ED4 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		589219F82B679D15001B3ED4 /* OngoingMedicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingMedicationRepository.swift; sourceTree = "<group>"; };
+		589219FD2B679F5D001B3ED4 /* SomeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeNetworkService.swift; sourceTree = "<group>"; };
+		58921A012B679F79001B3ED4 /* SomeNetworkDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeNetworkDataSource.swift; sourceTree = "<group>"; };
+		58921A032B679F9A001B3ED4 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		58921A052B67A373001B3ED4 /* OngoingMedicationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingMedicationDataSource.swift; sourceTree = "<group>"; };
+		58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
+		58921A112B68CBBD001B3ED4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewMedicationView.swift; sourceTree = "<group>"; };
+		58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingMedicationClient.swift; sourceTree = "<group>"; };
 		58A65D592B611E9000FB92CC /* Pomeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A65D5C2B611E9000FB92CC /* PomedsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsApp.swift; sourceTree = "<group>"; };
-		58A65D5E2B611E9000FB92CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		58A65D602B611E9000FB92CC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		58A65D622B611E9400FB92CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58A65D652B611E9400FB92CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		58A65D672B611E9400FB92CC /* Pomeds.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pomeds.entitlements; sourceTree = "<group>"; };
@@ -61,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58921A0B2B67CAC4001B3ED4 /* RealmSwift in Frameworks */,
+				58921A092B67CAC4001B3ED4 /* Realm in Frameworks */,
 				58A65D8F2B61202000FB92CC /* ComposableArchitecture in Frameworks */,
 				58A65D8C2B611F4F00FB92CC /* Lottie in Frameworks */,
 			);
@@ -96,8 +124,11 @@
 		589219D82B678639001B3ED4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				589219DE2B678758001B3ED4 /* UseCase */,
+				589219F42B679BBF001B3ED4 /* Interactor.swift */,
+				589219F62B679C10001B3ED4 /* Repository.swift */,
 				589219DD2B67874E001B3ED4 /* Entity */,
+				589219DE2B678758001B3ED4 /* UseCase */,
+				589219E32B678EFA001B3ED4 /* Repository */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -106,23 +137,15 @@
 			isa = PBXGroup;
 			children = (
 				589219DB2B6786C6001B3ED4 /* Features */,
-				589219DA2B6786C2001B3ED4 /* Views */,
 			);
 			path = Presentaion;
-			sourceTree = "<group>";
-		};
-		589219DA2B6786C2001B3ED4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				58A65D5E2B611E9000FB92CC /* ContentView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		589219DB2B6786C6001B3ED4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				589219E12B678784001B3ED4 /* SomeFeature.swift */,
+				58921A132B68D037001B3ED4 /* RegisterNewMedication */,
+				58921A0E2B680E9F001B3ED4 /* Home */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -138,7 +161,10 @@
 		589219DD2B67874E001B3ED4 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				58A65D602B611E9000FB92CC /* Item.swift */,
+				589219E62B678F6B001B3ED4 /* MedicationRecord.swift */,
+				589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */,
+				589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */,
+				589219EC2B679453001B3ED4 /* PushNotificationInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -146,9 +172,86 @@
 		589219DE2B678758001B3ED4 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				589219DF2B678769001B3ED4 /* UseCase.swift */,
+				589219F22B679B63001B3ED4 /* UseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		589219E32B678EFA001B3ED4 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				589219F82B679D15001B3ED4 /* OngoingMedicationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		589219FA2B679F26001B3ED4 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				58921A002B679F6D001B3ED4 /* Network */,
+				589219FF2B679F69001B3ED4 /* Local */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		589219FB2B679F46001B3ED4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				589219FC2B679F53001B3ED4 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		589219FC2B679F53001B3ED4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				589219FD2B679F5D001B3ED4 /* SomeNetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		589219FF2B679F69001B3ED4 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				58921A032B679F9A001B3ED4 /* LocalDataSource.swift */,
+				58921A052B67A373001B3ED4 /* OngoingMedicationDataSource.swift */,
+				58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		58921A002B679F6D001B3ED4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				58921A012B679F79001B3ED4 /* SomeNetworkDataSource.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		58921A0E2B680E9F001B3ED4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */,
+				58921A112B68CBBD001B3ED4 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		58921A132B68D037001B3ED4 /* RegisterNewMedication */ = {
+			isa = PBXGroup;
+			children = (
+				58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */,
+			);
+			path = RegisterNewMedication;
+			sourceTree = "<group>";
+		};
+		58921A162B691056001B3ED4 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				589219FB2B679F46001B3ED4 /* Services */,
+				589219FA2B679F26001B3ED4 /* DataSource */,
+			);
+			path = Dependency;
 			sourceTree = "<group>";
 		};
 		58A65D502B611E9000FB92CC = {
@@ -177,6 +280,7 @@
 				589219D72B678634001B3ED4 /* App */,
 				589219D82B678639001B3ED4 /* Domain */,
 				589219D92B6786B5001B3ED4 /* Presentaion */,
+				58921A162B691056001B3ED4 /* Dependency */,
 				589219DC2B6786D8001B3ED4 /* Resources */,
 				58A65D642B611E9400FB92CC /* Preview Content */,
 			);
@@ -227,6 +331,8 @@
 			packageProductDependencies = (
 				58A65D8B2B611F4F00FB92CC /* Lottie */,
 				58A65D8E2B61202000FB92CC /* ComposableArchitecture */,
+				58921A082B67CAC4001B3ED4 /* Realm */,
+				58921A0A2B67CAC4001B3ED4 /* RealmSwift */,
 			);
 			productName = Pomeds;
 			productReference = 58A65D592B611E9000FB92CC /* Pomeds.app */;
@@ -304,6 +410,7 @@
 			packageReferences = (
 				58A65D8A2B611F4F00FB92CC /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				58A65D8D2B61202000FB92CC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				58921A072B67CAC4001B3ED4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 58A65D5A2B611E9000FB92CC /* Products */;
 			projectDirPath = "";
@@ -347,11 +454,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A65D5F2B611E9000FB92CC /* ContentView.swift in Sources */,
-				589219E22B678784001B3ED4 /* SomeFeature.swift in Sources */,
-				589219E02B678769001B3ED4 /* UseCase.swift in Sources */,
-				58A65D612B611E9000FB92CC /* Item.swift in Sources */,
+				58921A042B679F9A001B3ED4 /* LocalDataSource.swift in Sources */,
+				58921A152B68D060001B3ED4 /* RegisterNewMedicationView.swift in Sources */,
+				589219F52B679BBF001B3ED4 /* Interactor.swift in Sources */,
+				589219EB2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift in Sources */,
+				589219E92B679109001B3ED4 /* MedicationIntakeInfo.swift in Sources */,
+				58921A182B6910B8001B3ED4 /* OngoingMedicationClient.swift in Sources */,
+				589219F92B679D15001B3ED4 /* OngoingMedicationRepository.swift in Sources */,
+				589219F32B679B63001B3ED4 /* UseCase.swift in Sources */,
 				58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */,
+				58921A022B679F79001B3ED4 /* SomeNetworkDataSource.swift in Sources */,
+				589219FE2B679F5D001B3ED4 /* SomeNetworkService.swift in Sources */,
+				589219ED2B679453001B3ED4 /* PushNotificationInfo.swift in Sources */,
+				589219E72B678F6B001B3ED4 /* MedicationRecord.swift in Sources */,
+				58921A102B680EA7001B3ED4 /* HomeReducer.swift in Sources */,
+				58921A122B68CBBD001B3ED4 /* HomeView.swift in Sources */,
+				589219F72B679C10001B3ED4 /* Repository.swift in Sources */,
+				58921A062B67A373001B3ED4 /* OngoingMedicationDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +838,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		58921A072B67CAC4001B3ED4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		58A65D8A2B611F4F00FB92CC /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -738,6 +865,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		58921A082B67CAC4001B3ED4 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58921A072B67CAC4001B3ED4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		58921A0A2B67CAC4001B3ED4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58921A072B67CAC4001B3ED4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		58A65D8B2B611F4F00FB92CC /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 58A65D8A2B611F4F00FB92CC /* XCRemoteSwiftPackageReference "lottie-ios" */;
