@@ -9,15 +9,11 @@ import Foundation
 
 import RealmSwift
 
-/**
- 
- NOT BEING USE
- - Will Be Back
- 
- */
 struct OngoingMedicationDataSource {
     
     static let shared = OngoingMedicationDataSource()
+    private init() {}
+    
     private let realm = try! Realm()
         
     func list(request: Bool) async throws -> [MedicationRecordItem] {

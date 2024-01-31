@@ -11,9 +11,29 @@ import ComposableArchitecture
 
 struct HomeView: View {
     
+    let store: StoreOf<HomeReducer>
+    @ObservedObject var viewStore: ViewStoreOf<HomeReducer>
+    
+    init(store: StoreOf<HomeReducer>) {
+        self.store = store
+        self.viewStore = ViewStore(self.store, observe: { $0 })
+    }
     
     var body: some View {
-
+        NavigationStackStore(self.store.scope(state: \.path, action: \.path)) {
+            ZStack {
+                Color(hex: "fbfbfb").ignoresSafeArea()
+                VStack {
+                    Text("ffff")
+                }
+            }
+            
+        } destination: { pathState in
+            
+        }
+        
+        
+        
 //        NavigationStackStore(self.store.scope(state: \.path, action: \.path)) {
 //            VStack {
 //                Text("--")
@@ -47,6 +67,6 @@ struct HomeView: View {
     }
 }
 
-//#Preview {
-//    HomeView(store: <#T##StoreOf<HomeReducer>#>)
-//}
+#Preview {
+    HomeView(store: PomedsApp.store)
+}
