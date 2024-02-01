@@ -13,16 +13,16 @@ import Foundation
  - Will Be Back
  
  */
-struct Interactor<Request, Response, R: Repository>: UseCase
-where R.Request == Request, R.Response == Response {
-    
-    private let repository: R
-    
-    init(repository: R) {
-        self.repository = repository
-    }
-    
-    func execute(request: Request) async throws -> Response {
-        try await repository.execute(request: request)
-    }
-}
+//struct Interactor<Request, Response, R: Repository>: UseCase
+//where R.Request == Request, R.Response == Response {
+//    
+//    private let repository: R
+//    
+//    init(repository: R) {
+//        self.repository = repository
+//    }
+//    
+//    func execute(request: Request) async throws -> Response {
+//        try await repository.execute(request: request)
+//    }
+//}
