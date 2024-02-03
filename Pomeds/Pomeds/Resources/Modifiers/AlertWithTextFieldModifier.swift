@@ -1,18 +1,18 @@
 //
-//  CaptureMedicineView.swift
+//  AlertWithTextFieldModifier.swift
 //  Pomeds
 //
-//  Created by KYUBO A. SHIM on 2/2/24.
+//  Created by KYUBO A. SHIM on 2/4/24.
 //
 
 import SwiftUI
 
-struct CaptureMedicineView: View {
+struct AlertWithTextFieldModifier: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    CaptureMedicineView()
+    AlertWithTextFieldModifier()
 }

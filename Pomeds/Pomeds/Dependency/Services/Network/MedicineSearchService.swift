@@ -18,7 +18,6 @@ struct MedicineSearchService {
     private init() {}
     
     func getMedicine(requset: MedicineName) async throws -> AnyPublisher<MedicationResponse, APIError> {
-        
         let url = ServiceKey.serviceUrl
         let requestParameter = try MedicationRequest(serviceKey: ServiceKey.key, pageNo: 1, numOfRows: 10, itemName: requset).asParameter()
         
