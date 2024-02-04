@@ -74,7 +74,6 @@ final class CameraViewModel: ObservableObject {
         cameraManager.captureImage { dataSet in
             guard let data = dataSet?.data else { return }
             handler(data)
-            print(data, "vm", "📌")
         }
     }
     
