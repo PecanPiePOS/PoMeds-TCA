@@ -13,9 +13,9 @@ struct MedicationIntakeInfo {
     var reasonForTaking: String
     var startDate: Date
     var endDate: Date
+    var numberOfTakingPerDay: Int
     var intervalOfTaking: Int
     var startTimeOfDay: Int
-    var isTakingMorningMedication: Bool
 }
 
 final class MedicationIntakeInfoItem: Object {
@@ -23,18 +23,18 @@ final class MedicationIntakeInfoItem: Object {
     @Persisted var reasonForTaking: String
     @Persisted var startDate: Date
     @Persisted var endDate: Date
+    @Persisted var numberOfTakingPerDay: Int
     @Persisted var intervalOfTaking: Int
     @Persisted var startTimeOfDay: Int
-    @Persisted var isTakingMorningMedication: Bool
     
-    convenience init(reasonForTaking: String, startDate: Date, endDate: Date, intervalOfTaking: Int, startTimeOfDay: Int, isTakingMorningMedication: Bool) {
+    convenience init(reasonForTaking: String, startDate: Date, endDate: Date, numberOfTaking: Int, intervalOfTaking: Int, startTimeOfDay: Int) {
         self.init()
         
         self.reasonForTaking = reasonForTaking
         self.startDate = startDate
         self.endDate = endDate
+        self.numberOfTakingPerDay = numberOfTakingPerDay
         self.intervalOfTaking = intervalOfTaking
         self.startTimeOfDay = startTimeOfDay
-        self.isTakingMorningMedication = isTakingMorningMedication
     }
 }
