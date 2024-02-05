@@ -12,14 +12,13 @@ import RealmSwift
 
 @Reducer
 struct SettingDetailOfMedicationReducer {
+    @Dependency(\.continuousClock) var clock
+    @Dependency(\.saveMedicationData) var saveData
     
-    // 여기에 save 해야 하는 거 추가 Dependency
-//    @Dependency(\.)
     @ObservableState
     struct State: Equatable {
-        @Presents var alert: AlertState<Action.Alert>?
 
-        let listOfMedicinesPassed: [String]/*IdentifiedArrayOf<RecognizedMedicationModel>*/
+        let listOfMedicinesPassed: [String]
         var medicineType: MedicationType
         var listOfNames: [String] = []
         
@@ -39,6 +38,7 @@ struct SettingDetailOfMedicationReducer {
     enum Action {
         case onAppear
         case medicationTitleDidEndEditing(String)
+        case medicationTypeDidSelected(MedicationType)
         case startDateDidAdd(Date)
         case endDateDidAdd(Date)
         case numberOfTakingPerDayDidAdd(Int)
@@ -46,17 +46,11 @@ struct SettingDetailOfMedicationReducer {
         case startTimeOfTakingDidAdd(Date)
         case alarmEnabled(Bool)
         case completeButtonDidTap
-        case saveCompleted
+//        case saveCompleted
         
-        case exitDidTap
-        case alert(PresentationAction<Alert>)
         case errorPop
-        case popToRootView
-        
-        enum Alert: Equatable {
-            case popToRoot
-            case cancel
-        }
+        case resetError
+        case popToRootViewWith(MedicationRecordItem)
     }
     
     var body: some ReducerOf<Self> {
@@ -67,27 +61,10 @@ struct SettingDetailOfMedicationReducer {
                 state.listOfMedicinesPassed.forEach {
                     state.listOfNames.append($0)
                 }
-                print(state.listOfNames, "📌 PPAASSSSSSED!! TO SETTING!!")
                 return .none
                 
-            case .exitDidTap:
-                state.alert = AlertState {
-                    TextState("새로운 복용 추가를 그만 두시겠습니까?")
-                } actions: {
-                    ButtonState(
-                        action: .send(.cancel)
-                    ) {
-                        TextState("취소")
-                    }
-                    ButtonState(
-                        role: .destructive,
-                        action: .send(.popToRoot)
-                    ) {
-                        TextState("확인")
-                    }
-                } message: {
-                    TextState("저장된 모든 정보가 사라져요")
-                }
+            case let .medicationTypeDidSelected(type):
+                state.medicineTypeTitle = type.componentText
                 return .none
                 
             case let .medicationTitleDidEndEditing(title):
@@ -120,6 +97,11 @@ struct SettingDetailOfMedicationReducer {
             case .completeButtonDidTap:
                 state.isLoading = true
                 return .run { [state] send in
+                    if state.medicationTitle.isEmpty {
+                        await send(.errorPop)
+                        return
+                    }
+                    
                     guard let startDate = state.startDate,
                           let endDate = state.endDate,
                           let numberOfTakingPerDay = state.numberOfTakingPerDay,
@@ -130,38 +112,40 @@ struct SettingDetailOfMedicationReducer {
                         return
                     }
                     
-                    let newMedicineModelToSave = MedicationRecord(isTakingNow: true, reasonForMedication: state.medicationTitle, startDate: startDate, endDate: endDate, pillNames: state.listOfNames, efficacy: "", sideEffects: [], medicationType: state.medicineTypeTitle)
-//                    여기에 await dependeny 로 저장시키고 savecomplete 로 보내
+                    
+                    let listOfPills = List<String>()
+                    var isTakingNow: Bool
+                    let now = Date().addingTimeInterval(3600)
+                    if now > startDate && endDate > now {
+                        isTakingNow = true
+                    } else {
+                        isTakingNow = false
+                    }
+                    
+                    for item in state.listOfNames {
+                        listOfPills.append(item)
+                    }
+                    
+                    let newMedicineModelToSave = MedicationRecordItem(isTakingNow: isTakingNow, reasonForMedication: state.medicationTitle, startDate: startDate, endDate: endDate, pillNames: listOfPills, efficacy: "", sideEffects: List<String>(), medicationType: state.medicineTypeTitle, numberOfTakingPerDay: numberOfTakingPerDay, intervalOfTaking: medicationIntervalTime, startTimeOfDay: startTimeOfTaking)
+                    
+                    await send(.popToRootViewWith(newMedicineModelToSave))
+                    try await self.clock.sleep(for: .seconds(3))
+                    await send(.errorPop)
                 }
-            case .saveCompleted:
-                return .run { send in
-                    await send(.popToRootView)
-                }
-                
-            case .alert(.presented(.popToRoot)):
-                return .run { send in
-                    await send(.popToRootView)
-                }
-                
-            case .alert(.presented(.cancel)):
-                return .none
-                
-            case .alert:
-                return .none
                 
             case .errorPop:
-                state.alert = AlertState {
-                    TextState("에러가 발생했어요. 다시 시도해주세요.")
-                } actions: {
-                    ButtonState(
-                        action: .send(.cancel)
-                    ) {
-                        TextState("확인")
-                    }
+                state.isErrorHappened = true
+                state.isLoading = false
+                return .run { send in
+                    try await self.clock.sleep(for: .seconds(2))
+                    await send(.resetError)
                 }
-                return .none
                 
-            case .popToRootView:
+            case .resetError:
+                state.isErrorHappened = false
+                return .none
+
+            case .popToRootViewWith:
                 return .none
             }
         }
