@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProgressLoadingView: View {
+    @State var text = ""
+    
     var body: some View {
         ZStack {
             Color(hex: "D9D9D9").opacity(0.4).ignoresSafeArea()
@@ -21,7 +23,7 @@ struct ProgressLoadingView: View {
                     .shadow(color: Color(hex: "F69956"), radius: 3)
                     
                 
-                Text("인식 중...")
+                Text("\(text)...")
                     .foregroundStyle(Color(hex: "E1AC70"))
                     .padding(.top, 20)
                     .font(.system(size: 18, weight: .semibold))

@@ -25,7 +25,7 @@ struct CaptureMedicineView: View {
 
             VStack {
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 30)
                 
                 ZStack {
                     CameraView(session: viewModel.session)
@@ -62,6 +62,11 @@ struct CaptureMedicineView: View {
                         Button {
                             store.send(.removeLastPhotoDidTap)
                         } label: {
+                            Image(systemName: "trash.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 16, height: 16)
+                                .foregroundStyle(.red.opacity(0.8))
                             Text("이전 사진 지우기")
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundStyle(.red.opacity(0.8))
@@ -72,6 +77,8 @@ struct CaptureMedicineView: View {
                 .padding(.horizontal, 30)
                 .padding(.bottom, 30)
                 
+                Spacer()
+                
                 ZStack {
                     HStack {
                         ZStack(alignment: .topTrailing) {
@@ -80,6 +87,7 @@ struct CaptureMedicineView: View {
                                 .scaledToFill()
                                 .frame(width: 60, height: 60)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .rotationEffect(.degrees(90))
                             
                             Text("\(store.photoCount)")
                                 .font(.footnote)
@@ -109,14 +117,13 @@ struct CaptureMedicineView: View {
                             store.send(.captureDisable)
                             viewModel.captureImage { [store = self.store] data in
                                 store.send(.captureDidTap(data))
-                                print(data, "📌", "tapped")
                             }
                         } label: {
                             Image(systemName: "circle.inset.filled")
                                 .resizable()
                                 .scaledToFit()
                                 .foregroundStyle( store.isCaptureEnabled ? Color(hex: "DDDDDD"): .gray)
-                                .frame(width: 63, height: 63)
+                                .frame(width: 70, height: 70)
                         }
                         .disabled(!store.isCaptureEnabled)
                         
@@ -129,14 +136,16 @@ struct CaptureMedicineView: View {
                     }
                 }
                 .padding(.horizontal, 30)
-                
-                Spacer()
-                    .frame(height: 5)
+                .padding(.bottom, 30)
+            }
+            
+            if store.isRecognizingLoading {
+                ProgressLoadingView(text: "인식 중")
+                    .ignoresSafeArea()
             }
         }
-        .onAppear {
-            store.send(.resetLoading)
-        }
+        .toolbar(store.isRecognizingLoading ? .hidden: .visible, for: .navigationBar)
+        .alert(store: self.store.scope(state: \.$alert, action: \.alert))
         .navigationTitle("약 찍기")
         .navigationBarBackButtonHidden()
         .toolbarColorScheme(.dark, for: .navigationBar)
@@ -158,7 +167,7 @@ struct CaptureMedicineView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    print("Something")
+                    store.send(.moveToSupplementsDidTap)
                 }, label: {
                     Text("영양제")
                         .font(.system(size: 17, weight: .semibold))
@@ -167,6 +176,7 @@ struct CaptureMedicineView: View {
             }
         }
         .onAppear {
+            store.send(.resetLoading)
             viewModel.setupBindings()
             viewModel.requestCameraPermission()
         }
