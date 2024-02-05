@@ -10,17 +10,26 @@ import SwiftUI
 import UIKit
 
 import ComposableArchitecture
+import RealmSwift
 
 @Reducer
 struct HomeReducer {
     typealias TakingMedication = MedicationRecordItem
     @Dependency(\.ongoingMedicationData) var medicationData
+    @Dependency(\.continuousClock) var clock
+    
+    private(set) var localRealm: Realm?
+    
+    init() {
+        openRealm()
+    }
     
     @ObservableState
     struct State: Equatable {
         var isLoading: Bool = false
         var isTakingMeds: Bool = false
         var takingMedicationList: [TakingMedication] = []
+        var hasSucceededRegisteringNewMeds: Bool = false
         var path = StackState<Path.State>()
     }
     
@@ -28,38 +37,57 @@ struct HomeReducer {
         case path(StackAction<Path.State, Path.Action>)
         case popToRoot
         
+        case onAppear
         case fetchOngoingMedication
         case fetchedData(Result<[TakingMedication], Error>)
-                
-//        case registerNewMedicationDidTap
-//        case registerCaptureDidTap
-//        case registerSupplementsDidTap
-//        case registerMedicinesCaptureFinishedDidTap
-//        case registerDetailMedicationDidTap
+        case showNewRegisterSuccessToast
+        case hideNewRegisterSuccessToast
         
-//        case ongoingMedicationsDidTap
-//        case ongoingDetailMedicationsDidTap
+        //        case registerNewMedicationDidTap
+        //        case registerCaptureDidTap
+        //        case registerSupplementsDidTap
+        //        case registerMedicinesCaptureFinishedDidTap
+        //        case registerDetailMedicationDidTap
         
-//        case pastMedicationsDidTap
-//        case pastDetailMedicationsDidTap
+        //        case ongoingMedicationsDidTap
+        //        case ongoingDetailMedicationsDidTap
         
-//        case myPageDidTap
-//        case sideEffectsWhenAvailableDidTap
+        //        case pastMedicationsDidTap
+        //        case pastDetailMedicationsDidTap
+        
+        //        case myPageDidTap
+        //        case sideEffectsWhenAvailableDidTap
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-            case .fetchOngoingMedication:
+            case .onAppear:
                 state.isLoading = true
+                state.takingMedicationList = fetchOngoingMedications()
+                state.isLoading = false
+                return .none
+                
+            case .fetchOngoingMedication:
                 return .run { send in
                     do {
-                        let response = try await medicationData.fetch(isTaking: true)
+                        let response = try await medicationData.fetch()
                         await send(.fetchedData(.success(response)))
                     } catch let error {
                         await send(.fetchedData(.failure(error)))
                     }
                 }
+
+            case .showNewRegisterSuccessToast:
+                state.hasSucceededRegisteringNewMeds = true
+                return .run { send in
+                    try await self.clock.sleep(for: .seconds(1))
+                    await send(.hideNewRegisterSuccessToast)
+                }
+                
+            case .hideNewRegisterSuccessToast:
+                state.hasSucceededRegisteringNewMeds = false
+                return .none
                 
             case let .fetchedData(.success(medication)):
                 state.isLoading = false
@@ -78,37 +106,88 @@ struct HomeReducer {
                 case .element(id: _, action: .captureImage(.recognizeDidEnd(let data))):
                     state.path.append(.listOfRecognizedMedicinesScene(.init(dataPassed: data)))
                     return .none
-                case .element(id: _, action: .listOfRecognizedMedicines(.nextButtonDidTap)):
-                    state.path.append(.captureImageScene())
+                case .element(id: _, action: .listOfRecognizedMedicines(.nextButtonDidTap(let data))):
+                    state.path.append(.settingDetailOfMedicationScene(.init(listOfMedicinesPassed: data.nameList, medicineType: data.type)))
                     return .none
                 case .element(id: _, action: .listOfRecognizedMedicines(.popToRootView)):
                     state.path.removeAll()
                     return .none
-                case .element(id: _, action: .settingDetailOfMedication(.popToRootView)):
-                    state.path.removeAll()
-                    return .none
+                case .element(id: _, action: .settingDetailOfMedication(.popToRootViewWith(let newMedication))):
+                    let success = registerNewMedicine(newMedication: newMedication)
+                    switch success {
+                    case true:
+                        state.path.removeAll()
+                        return .run { send in
+                            try await self.clock.sleep(for: .seconds(1))
+                            await send(.showNewRegisterSuccessToast)
+                        }
+                    case false:
+                        return .none
+                    }
                 default:
                     return .none
                 }
                 
             case .popToRoot:
-                /// onAppear 에..? 일단 onAppear 에...
                 state.path.removeAll()
                 return .none
-//            case .registerNewMedicationDidTap:
-//                
-//            case .ongoingMedicationsDidTap:
-//                
-//            case .pastMedicationDidTap:
-//                
-//            case .myPageDidTap:
-//                
-//            case .sideEffectsWhenAvailableDidTap:
-
+                //            case .registerNewMedicationDidTap:
+                //
+                //            case .ongoingMedicationsDidTap:
+                //
+                //            case .pastMedicationDidTap:
+                //
+                //            case .myPageDidTap:
+                //
+                //            case .sideEffectsWhenAvailableDidTap:
             }
         }
         .forEach(\.path, action: \.path) {
             Path()
+        }
+    }
+    
+    mutating
+    func openRealm() {
+        do {
+            let configuration = Realm.Configuration(schemaVersion: UInt64(ServiceKey.realmSchemaVersion))
+            Realm.Configuration.defaultConfiguration = configuration
+            self.localRealm = try Realm()
+        } catch {
+            print("Error opening Realm : \(error)")
+        }
+    }
+    
+    private func fetchOngoingMedications() -> [MedicationRecordItem] {
+        if let localRealm {
+            let now = Date()
+            
+            let incomingMedicationsList = localRealm
+                .objects(MedicationRecordItem.self)
+                .filter { $0.endDate > now }
+            let ongoingMedications = incomingMedicationsList
+                .filter { now > $0.startDate }
+            
+            print("📌realm", ongoingMedications)
+            return Array(ongoingMedications)
+        } else {
+            return []
+        }
+    }
+    
+    private func registerNewMedicine(newMedication: MedicationRecordItem) -> Bool {
+        if let localRealm {
+            do {
+                try localRealm.write {
+                    localRealm.add(newMedication)
+                }
+                return true
+            } catch let error  {
+                print("Error adding data: <\(error)>")
+                return false
+            }
+        } else {
+            return false
         }
     }
 }
@@ -117,6 +196,7 @@ extension HomeReducer {
     
     @Reducer
     struct Path {
+        @ObservableState
         enum State: Equatable {
             case registerNewMedicationScene(RegisterNewMedicationReducer.State = .init())
             case captureImageScene(CaptureMedicinesReducer.State = .init())
@@ -153,18 +233,6 @@ extension HomeReducer {
             Scope(state: \.settingDetailOfMedicationScene, action: \.settingDetailOfMedication) {
                 SettingDetailOfMedicationReducer()
             }
-//            Scope(state: \.listOfOngoingMedicationScene, action: \.listOfOngoingMedication) {
-//                
-//            }
-//            Scope(state: \.listOfPastMedicationScene, action: \.listOfPastMedication) {
-//                
-//            }
-//            Scope(state: \.myPageScene, action: \.myPage) {
-//                
-//            }
-//            Scope(state: \.manageSideEffectsScene, action: \.manageSideEffects) {
-//                
-//            }
         }
     }
 }
