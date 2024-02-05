@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+final class StringLiterals {
+    
+    static let registerNewMedicationDescription = ""
+}
