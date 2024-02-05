@@ -11,9 +11,14 @@ import ComposableArchitecture
 
 @main
 struct PomedsApp: App {
+    static let store = Store(initialState: HomeReducer.State()) {
+        HomeReducer()
+            ._printChanges()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(store: PomedsApp.store)
         }
     }
 }
