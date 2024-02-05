@@ -44,6 +44,7 @@ struct ListOfRecognizedMedicineReducer {
         case editingMedicineDidEndEditing(String)
         case removeDidTap(IndexSet)
         case exitDidTap
+        case syncDataWhenCompleteDidTap(RecognizedMedicationTransferModel)
         
         case resetData
         case popToRootView
@@ -58,27 +59,13 @@ struct ListOfRecognizedMedicineReducer {
         }
     }
     
-    /*
-     
-     struct RecognizedMedicationModel: Equatable, Identifiable {
-         let id: UUID
-         var medicineName: String
-     }
-     
-     struct RecognizedMedicationType: Equatable {
-         var nameList: [String]
-         var type: MedicationType
-     }
-     
-     
-     */
-    
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .onAppear:
                 state.titleText = state.dataPassed.type.titleText
                 state.medicationType = state.dataPassed.type
+                state.recognizedList = []
                 for item in state.dataPassed.nameList {
                     let modifiedName = item.replacingOccurrences(of: "\n", with: "")
                     if !modifiedName.isEmpty {
@@ -94,9 +81,13 @@ struct ListOfRecognizedMedicineReducer {
                         arrayOfNameList.append(item.medicineName)
                     }
                     await send(.nextButtonDidTap(.init(nameList: arrayOfNameList, type: type)))
+                    await send(.syncDataWhenCompleteDidTap(.init(nameList: arrayOfNameList, type: type)))
                 }
                 
-                // TODO: 이거 데이터 잘 넘어가나?
+            case let .syncDataWhenCompleteDidTap(editedData):
+                state.dataPassed = editedData
+                return .none
+                
             case .nextButtonDidTap:
                 return .none
                 

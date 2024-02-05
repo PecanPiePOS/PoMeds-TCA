@@ -51,6 +51,7 @@ struct ListOfRecognizedMedicineView: View {
                             HStack {
                                 Text(medicine.medicineName)
                                     .font(.system(size: 18, weight: .medium))
+                                    .lineLimit(1)
                                 Spacer()
                                 Button {
                                     editingMedicine = medicine.medicineName
@@ -72,6 +73,7 @@ struct ListOfRecognizedMedicineView: View {
                     } footer: {
                         Text("촬영한 약 이름과 다르다면, 오른쪽의 수정 아이콘을 눌러 수정해주세요. 삭제하시려면, 왼쪽으로 스와이프 해주세요.")
                             .foregroundStyle(.gray.opacity(0.7))
+                            .padding(.leading, -10)
                     }
                 }
                 .scrollContentBackground(.hidden)
@@ -89,8 +91,6 @@ struct ListOfRecognizedMedicineView: View {
                 .padding(.horizontal, 15)
             }
         }
-        .navigationTitle("약 수정하기")
-        .toolbar(.hidden, for: .navigationBar)
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
