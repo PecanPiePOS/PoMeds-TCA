@@ -11,13 +11,18 @@ import ComposableArchitecture
 
 @DependencyClient
 struct OngoingMedicationClient {
-    var fetch: (_ isTaking: Bool) async throws -> [MedicationRecordItem]
+    var fetch: () async throws -> [MedicationRecordItem]
 }
 
 extension OngoingMedicationClient: DependencyKey {
     static let liveValue = Self (
-        fetch: { isTaking in
-            return try await OngoingMedicationDataSource.shared.list(request: true)
+        fetch: { 
+            var result: [MedicationRecordItem] = []
+            try await MedicationRealmDataSource.list(request: true) { data in
+                print(data, "📌")
+                result = data
+            }
+            return result
         }
     )
 }
