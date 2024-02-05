@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		586C182B2B70C202009F1E5D /* SaveNewMedicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */; };
+		586C18322B70FBC8009F1E5D /* home2.json in Resources */ = {isa = PBXBuildFile; fileRef = 586C18312B70FBC8009F1E5D /* home2.json */; };
 		589219E72B678F6B001B3ED4 /* MedicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E62B678F6B001B3ED4 /* MedicationRecord.swift */; };
 		589219E92B679109001B3ED4 /* MedicationIntakeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */; };
 		589219EB2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */; };
@@ -15,16 +17,37 @@
 		589219F52B679BBF001B3ED4 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F42B679BBF001B3ED4 /* Interactor.swift */; };
 		589219F72B679C10001B3ED4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F62B679C10001B3ED4 /* Repository.swift */; };
 		589219F92B679D15001B3ED4 /* OngoingMedicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219F82B679D15001B3ED4 /* OngoingMedicationRepository.swift */; };
-		589219FE2B679F5D001B3ED4 /* SomeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219FD2B679F5D001B3ED4 /* SomeNetworkService.swift */; };
-		58921A022B679F79001B3ED4 /* SomeNetworkDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A012B679F79001B3ED4 /* SomeNetworkDataSource.swift */; };
 		58921A042B679F9A001B3ED4 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A032B679F9A001B3ED4 /* LocalDataSource.swift */; };
-		58921A062B67A373001B3ED4 /* OngoingMedicationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A052B67A373001B3ED4 /* OngoingMedicationDataSource.swift */; };
+		58921A062B67A373001B3ED4 /* MedicationRealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A052B67A373001B3ED4 /* MedicationRealmDataSource.swift */; };
 		58921A092B67CAC4001B3ED4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 58921A082B67CAC4001B3ED4 /* Realm */; };
 		58921A0B2B67CAC4001B3ED4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58921A0A2B67CAC4001B3ED4 /* RealmSwift */; };
 		58921A102B680EA7001B3ED4 /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */; };
 		58921A122B68CBBD001B3ED4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A112B68CBBD001B3ED4 /* HomeView.swift */; };
 		58921A152B68D060001B3ED4 /* RegisterNewMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */; };
 		58921A182B6910B8001B3ED4 /* OngoingMedicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */; };
+		58921A1A2B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A192B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift */; };
+		58921A1C2B693154001B3ED4 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A1B2B693154001B3ED4 /* StringLiterals.swift */; };
+		58921A1E2B6932CC001B3ED4 /* RegisterMedicationHelperReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A1D2B6932CC001B3ED4 /* RegisterMedicationHelperReducer.swift */; };
+		58921A212B6949B1001B3ED4 /* CaptureMedicinesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A202B6949B1001B3ED4 /* CaptureMedicinesReducer.swift */; };
+		58921A232B6A0382001B3ED4 /* MedicineSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A222B6A0382001B3ED4 /* MedicineSearchClient.swift */; };
+		58921A252B6A057F001B3ED4 /* MedicationAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A242B6A057F001B3ED4 /* MedicationAPIModel.swift */; };
+		58921A272B6A0FFD001B3ED4 /* MedicineSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A262B6A0FFD001B3ED4 /* MedicineSearchService.swift */; };
+		58921A2A2B6A1212001B3ED4 /* ServiceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A292B6A1212001B3ED4 /* ServiceKey.swift */; };
+		58921A2D2B6A14B2001B3ED4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 58921A2C2B6A14B2001B3ED4 /* Alamofire */; };
+		58921A302B6A152E001B3ED4 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 58921A2F2B6A152E001B3ED4 /* ComposableArchitecture */; };
+		58921A332B6A1BD4001B3ED4 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A322B6A1BD4001B3ED4 /* Encodable+.swift */; };
+		58921A382B6A217B001B3ED4 /* VisionRecognitionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A372B6A217B001B3ED4 /* VisionRecognitionClient.swift */; };
+		58921A3A2B6A2DED001B3ED4 /* VisionRecognitionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A392B6A2DED001B3ED4 /* VisionRecognitionHelper.swift */; };
+		58921A3D2B6B639E001B3ED4 /* ListOfRecognizedMedicineReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A3C2B6B639E001B3ED4 /* ListOfRecognizedMedicineReducer.swift */; };
+		58921A402B6B8425001B3ED4 /* SettingDetailOfMedicationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A3F2B6B8425001B3ED4 /* SettingDetailOfMedicationReducer.swift */; };
+		58921A422B6B9917001B3ED4 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A412B6B9917001B3ED4 /* Color+.swift */; };
+		58921A462B6B9AB9001B3ED4 /* HomeCircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A452B6B9AB9001B3ED4 /* HomeCircularView.swift */; };
+		58921A4C2B6BF899001B3ED4 /* HomeCTAButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A4B2B6BF899001B3ED4 /* HomeCTAButtonView.swift */; };
+		58921A522B6CD602001B3ED4 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A512B6CD602001B3ED4 /* UINavigationController+.swift */; };
+		58921A542B6CDA7D001B3ED4 /* HomeMedicineTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A532B6CDA7D001B3ED4 /* HomeMedicineTitleView.swift */; };
+		58921A562B6D16C6001B3ED4 /* CaptureMedicineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A552B6D16C6001B3ED4 /* CaptureMedicineView.swift */; };
+		58921A582B6D3478001B3ED4 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A572B6D3478001B3ED4 /* CameraView.swift */; };
+		58921A5A2B6D5538001B3ED4 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58921A592B6D5538001B3ED4 /* CameraViewModel.swift */; };
 		58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D5C2B611E9000FB92CC /* PomedsApp.swift */; };
 		58A65D632B611E9400FB92CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58A65D622B611E9400FB92CC /* Assets.xcassets */; };
 		58A65D662B611E9400FB92CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58A65D652B611E9400FB92CC /* Preview Assets.xcassets */; };
@@ -32,7 +55,15 @@
 		58A65D7C2B611E9400FB92CC /* PomedsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D7B2B611E9400FB92CC /* PomedsUITests.swift */; };
 		58A65D7E2B611E9400FB92CC /* PomedsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D7D2B611E9400FB92CC /* PomedsUITestsLaunchTests.swift */; };
 		58A65D8C2B611F4F00FB92CC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 58A65D8B2B611F4F00FB92CC /* Lottie */; };
-		58A65D8F2B61202000FB92CC /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 58A65D8E2B61202000FB92CC /* ComposableArchitecture */; };
+		58D2AC252B6F638600561784 /* PhotoPostProcessClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC242B6F638600561784 /* PhotoPostProcessClient.swift */; };
+		58D2AC272B6F649800561784 /* PhotoPostProcessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC262B6F649800561784 /* PhotoPostProcessHelper.swift */; };
+		58D2AC2D2B6F974C00561784 /* CaptureImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC2C2B6F974C00561784 /* CaptureImageModel.swift */; };
+		58D2AC302B6F97B000561784 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC2F2B6F97B000561784 /* CameraManager.swift */; };
+		58D2AC322B6F999B00561784 /* ListOfRecognizedMedicineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC312B6F999B00561784 /* ListOfRecognizedMedicineView.swift */; };
+		58D2AC342B6F9F7000561784 /* ProgressLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC332B6F9F7000561784 /* ProgressLoadingView.swift */; };
+		58D2AC372B6FD3F400561784 /* AlertWithTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC362B6FD3F400561784 /* AlertWithTextFieldModifier.swift */; };
+		58D2AC392B6FE61600561784 /* CommonCleanNextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC382B6FE61600561784 /* CommonCleanNextButtonView.swift */; };
+		58D2AC3B2B6FEB7100561784 /* SettingDetailOfMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC3A2B6FEB7100561784 /* SettingDetailOfMedicationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +84,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewMedicationClient.swift; sourceTree = "<group>"; };
+		586C18312B70FBC8009F1E5D /* home2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home2.json; sourceTree = "<group>"; };
 		589219E62B678F6B001B3ED4 /* MedicationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationRecord.swift; sourceTree = "<group>"; };
 		589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationIntakeInfo.swift; sourceTree = "<group>"; };
 		589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplifiedMedicationIntakeInfo.swift; sourceTree = "<group>"; };
@@ -61,14 +94,33 @@
 		589219F42B679BBF001B3ED4 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		589219F62B679C10001B3ED4 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		589219F82B679D15001B3ED4 /* OngoingMedicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingMedicationRepository.swift; sourceTree = "<group>"; };
-		589219FD2B679F5D001B3ED4 /* SomeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeNetworkService.swift; sourceTree = "<group>"; };
-		58921A012B679F79001B3ED4 /* SomeNetworkDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeNetworkDataSource.swift; sourceTree = "<group>"; };
 		58921A032B679F9A001B3ED4 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
-		58921A052B67A373001B3ED4 /* OngoingMedicationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingMedicationDataSource.swift; sourceTree = "<group>"; };
+		58921A052B67A373001B3ED4 /* MedicationRealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationRealmDataSource.swift; sourceTree = "<group>"; };
 		58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		58921A112B68CBBD001B3ED4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewMedicationView.swift; sourceTree = "<group>"; };
 		58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingMedicationClient.swift; sourceTree = "<group>"; };
+		58921A192B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNewMedicationReducer.swift; sourceTree = "<group>"; };
+		58921A1B2B693154001B3ED4 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
+		58921A1D2B6932CC001B3ED4 /* RegisterMedicationHelperReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMedicationHelperReducer.swift; sourceTree = "<group>"; };
+		58921A202B6949B1001B3ED4 /* CaptureMedicinesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMedicinesReducer.swift; sourceTree = "<group>"; };
+		58921A222B6A0382001B3ED4 /* MedicineSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineSearchClient.swift; sourceTree = "<group>"; };
+		58921A242B6A057F001B3ED4 /* MedicationAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationAPIModel.swift; sourceTree = "<group>"; };
+		58921A262B6A0FFD001B3ED4 /* MedicineSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineSearchService.swift; sourceTree = "<group>"; };
+		58921A292B6A1212001B3ED4 /* ServiceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceKey.swift; sourceTree = "<group>"; };
+		58921A322B6A1BD4001B3ED4 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		58921A372B6A217B001B3ED4 /* VisionRecognitionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionRecognitionClient.swift; sourceTree = "<group>"; };
+		58921A392B6A2DED001B3ED4 /* VisionRecognitionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionRecognitionHelper.swift; sourceTree = "<group>"; };
+		58921A3C2B6B639E001B3ED4 /* ListOfRecognizedMedicineReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRecognizedMedicineReducer.swift; sourceTree = "<group>"; };
+		58921A3F2B6B8425001B3ED4 /* SettingDetailOfMedicationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailOfMedicationReducer.swift; sourceTree = "<group>"; };
+		58921A412B6B9917001B3ED4 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		58921A452B6B9AB9001B3ED4 /* HomeCircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCircularView.swift; sourceTree = "<group>"; };
+		58921A4B2B6BF899001B3ED4 /* HomeCTAButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCTAButtonView.swift; sourceTree = "<group>"; };
+		58921A512B6CD602001B3ED4 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		58921A532B6CDA7D001B3ED4 /* HomeMedicineTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMedicineTitleView.swift; sourceTree = "<group>"; };
+		58921A552B6D16C6001B3ED4 /* CaptureMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMedicineView.swift; sourceTree = "<group>"; };
+		58921A572B6D3478001B3ED4 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		58921A592B6D5538001B3ED4 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		58A65D592B611E9000FB92CC /* Pomeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pomeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A65D5C2B611E9000FB92CC /* PomedsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsApp.swift; sourceTree = "<group>"; };
 		58A65D622B611E9400FB92CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +132,15 @@
 		58A65D772B611E9400FB92CC /* PomedsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomedsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A65D7B2B611E9400FB92CC /* PomedsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsUITests.swift; sourceTree = "<group>"; };
 		58A65D7D2B611E9400FB92CC /* PomedsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		58D2AC242B6F638600561784 /* PhotoPostProcessClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostProcessClient.swift; sourceTree = "<group>"; };
+		58D2AC262B6F649800561784 /* PhotoPostProcessHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostProcessHelper.swift; sourceTree = "<group>"; };
+		58D2AC2C2B6F974C00561784 /* CaptureImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureImageModel.swift; sourceTree = "<group>"; };
+		58D2AC2F2B6F97B000561784 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		58D2AC312B6F999B00561784 /* ListOfRecognizedMedicineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfRecognizedMedicineView.swift; sourceTree = "<group>"; };
+		58D2AC332B6F9F7000561784 /* ProgressLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLoadingView.swift; sourceTree = "<group>"; };
+		58D2AC362B6FD3F400561784 /* AlertWithTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextFieldModifier.swift; sourceTree = "<group>"; };
+		58D2AC382B6FE61600561784 /* CommonCleanNextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCleanNextButtonView.swift; sourceTree = "<group>"; };
+		58D2AC3A2B6FEB7100561784 /* SettingDetailOfMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailOfMedicationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +148,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58921A302B6A152E001B3ED4 /* ComposableArchitecture in Frameworks */,
 				58921A0B2B67CAC4001B3ED4 /* RealmSwift in Frameworks */,
+				58921A2D2B6A14B2001B3ED4 /* Alamofire in Frameworks */,
 				58921A092B67CAC4001B3ED4 /* Realm in Frameworks */,
-				58A65D8F2B61202000FB92CC /* ComposableArchitecture in Frameworks */,
 				58A65D8C2B611F4F00FB92CC /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +173,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		586C18292B70C1E1009F1E5D /* SaveNewMedication */ = {
+			isa = PBXGroup;
+			children = (
+				586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */,
+			);
+			path = SaveNewMedication;
+			sourceTree = "<group>";
+		};
+		586C18302B70F9DB009F1E5D /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				586C18312B70FBC8009F1E5D /* home2.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		589219D72B678634001B3ED4 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,8 +222,11 @@
 		589219DB2B6786C6001B3ED4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				58921A132B68D037001B3ED4 /* RegisterNewMedication */,
 				58921A0E2B680E9F001B3ED4 /* Home */,
+				58921A132B68D037001B3ED4 /* RegisterNewMedication */,
+				58921A1F2B694975001B3ED4 /* CaputreNewMedication */,
+				58921A3B2B6B637A001B3ED4 /* ListOfRecognizedMedicines */,
+				58921A3E2B6B83D1001B3ED4 /* SettingDetailMedication */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -154,6 +235,10 @@
 			isa = PBXGroup;
 			children = (
 				58A65D622B611E9400FB92CC /* Assets.xcassets */,
+				58921A1B2B693154001B3ED4 /* StringLiterals.swift */,
+				586C18302B70F9DB009F1E5D /* Lottie */,
+				58D2AC352B6FD3DF00561784 /* Modifiers */,
+				58921A312B6A1BC7001B3ED4 /* Extensions */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -165,6 +250,8 @@
 				589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */,
 				589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */,
 				589219EC2B679453001B3ED4 /* PushNotificationInfo.swift */,
+				58921A242B6A057F001B3ED4 /* MedicationAPIModel.swift */,
+				58D2AC2C2B6F974C00561784 /* CaptureImageModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -188,6 +275,7 @@
 		589219FA2B679F26001B3ED4 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				58D2AC2E2B6F976200561784 /* Camera */,
 				58921A002B679F6D001B3ED4 /* Network */,
 				589219FF2B679F69001B3ED4 /* Local */,
 			);
@@ -205,7 +293,7 @@
 		589219FC2B679F53001B3ED4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				589219FD2B679F5D001B3ED4 /* SomeNetworkService.swift */,
+				58921A262B6A0FFD001B3ED4 /* MedicineSearchService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -214,8 +302,10 @@
 			isa = PBXGroup;
 			children = (
 				58921A032B679F9A001B3ED4 /* LocalDataSource.swift */,
-				58921A052B67A373001B3ED4 /* OngoingMedicationDataSource.swift */,
-				58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */,
+				586C18292B70C1E1009F1E5D /* SaveNewMedication */,
+				58D2AC232B6F635200561784 /* PhotoPostProcess */,
+				58921A362B6A2158001B3ED4 /* VisionRecognition */,
+				58921A342B6A1F47001B3ED4 /* OngoingMedication */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -223,7 +313,7 @@
 		58921A002B679F6D001B3ED4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				58921A012B679F79001B3ED4 /* SomeNetworkDataSource.swift */,
+				58921A352B6A1F5D001B3ED4 /* MedicationSearch */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -231,8 +321,8 @@
 		58921A0E2B680E9F001B3ED4 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */,
-				58921A112B68CBBD001B3ED4 /* HomeView.swift */,
+				58921A442B6B9AA0001B3ED4 /* Features */,
+				58921A432B6B9A99001B3ED4 /* Views */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -240,7 +330,8 @@
 		58921A132B68D037001B3ED4 /* RegisterNewMedication */ = {
 			isa = PBXGroup;
 			children = (
-				58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */,
+				58921A4E2B6CCBA1001B3ED4 /* Views */,
+				58921A4D2B6CCB9C001B3ED4 /* Features */,
 			);
 			path = RegisterNewMedication;
 			sourceTree = "<group>";
@@ -252,6 +343,113 @@
 				589219FA2B679F26001B3ED4 /* DataSource */,
 			);
 			path = Dependency;
+			sourceTree = "<group>";
+		};
+		58921A1F2B694975001B3ED4 /* CaputreNewMedication */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC2A2B6F972500561784 /* Views */,
+				58D2AC2B2B6F972900561784 /* Features */,
+			);
+			path = CaputreNewMedication;
+			sourceTree = "<group>";
+		};
+		58921A282B6A120A001B3ED4 /* ServiceKey */ = {
+			isa = PBXGroup;
+			children = (
+				58921A292B6A1212001B3ED4 /* ServiceKey.swift */,
+			);
+			path = ServiceKey;
+			sourceTree = "<group>";
+		};
+		58921A312B6A1BC7001B3ED4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				58921A322B6A1BD4001B3ED4 /* Encodable+.swift */,
+				58921A412B6B9917001B3ED4 /* Color+.swift */,
+				58921A512B6CD602001B3ED4 /* UINavigationController+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		58921A342B6A1F47001B3ED4 /* OngoingMedication */ = {
+			isa = PBXGroup;
+			children = (
+				58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */,
+				58921A052B67A373001B3ED4 /* MedicationRealmDataSource.swift */,
+			);
+			path = OngoingMedication;
+			sourceTree = "<group>";
+		};
+		58921A352B6A1F5D001B3ED4 /* MedicationSearch */ = {
+			isa = PBXGroup;
+			children = (
+				58921A222B6A0382001B3ED4 /* MedicineSearchClient.swift */,
+			);
+			path = MedicationSearch;
+			sourceTree = "<group>";
+		};
+		58921A362B6A2158001B3ED4 /* VisionRecognition */ = {
+			isa = PBXGroup;
+			children = (
+				58921A372B6A217B001B3ED4 /* VisionRecognitionClient.swift */,
+				58921A392B6A2DED001B3ED4 /* VisionRecognitionHelper.swift */,
+			);
+			path = VisionRecognition;
+			sourceTree = "<group>";
+		};
+		58921A3B2B6B637A001B3ED4 /* ListOfRecognizedMedicines */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC3C2B6FF05E00561784 /* Views */,
+				58D2AC3D2B6FF06700561784 /* Features */,
+			);
+			path = ListOfRecognizedMedicines;
+			sourceTree = "<group>";
+		};
+		58921A3E2B6B83D1001B3ED4 /* SettingDetailMedication */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC3E2B6FF07600561784 /* Views */,
+				58D2AC3F2B6FF07A00561784 /* Features */,
+			);
+			path = SettingDetailMedication;
+			sourceTree = "<group>";
+		};
+		58921A432B6B9A99001B3ED4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58921A112B68CBBD001B3ED4 /* HomeView.swift */,
+				58921A452B6B9AB9001B3ED4 /* HomeCircularView.swift */,
+				58921A4B2B6BF899001B3ED4 /* HomeCTAButtonView.swift */,
+				58921A532B6CDA7D001B3ED4 /* HomeMedicineTitleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		58921A442B6B9AA0001B3ED4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				58921A0F2B680EA7001B3ED4 /* HomeReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		58921A4D2B6CCB9C001B3ED4 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				58921A192B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift */,
+				58921A1D2B6932CC001B3ED4 /* RegisterMedicationHelperReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		58921A4E2B6CCBA1001B3ED4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58921A142B68D060001B3ED4 /* RegisterNewMedicationView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		58A65D502B611E9000FB92CC = {
@@ -277,6 +475,7 @@
 		58A65D5B2B611E9000FB92CC /* Pomeds */ = {
 			isa = PBXGroup;
 			children = (
+				58921A282B6A120A001B3ED4 /* ServiceKey */,
 				589219D72B678634001B3ED4 /* App */,
 				589219D82B678639001B3ED4 /* Domain */,
 				589219D92B6786B5001B3ED4 /* Presentaion */,
@@ -312,6 +511,83 @@
 			path = PomedsUITests;
 			sourceTree = "<group>";
 		};
+		58D2AC232B6F635200561784 /* PhotoPostProcess */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC242B6F638600561784 /* PhotoPostProcessClient.swift */,
+				58D2AC262B6F649800561784 /* PhotoPostProcessHelper.swift */,
+			);
+			path = PhotoPostProcess;
+			sourceTree = "<group>";
+		};
+		58D2AC2A2B6F972500561784 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58921A552B6D16C6001B3ED4 /* CaptureMedicineView.swift */,
+				58921A572B6D3478001B3ED4 /* CameraView.swift */,
+				58D2AC332B6F9F7000561784 /* ProgressLoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		58D2AC2B2B6F972900561784 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				58921A202B6949B1001B3ED4 /* CaptureMedicinesReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		58D2AC2E2B6F976200561784 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC2F2B6F97B000561784 /* CameraManager.swift */,
+				58921A592B6D5538001B3ED4 /* CameraViewModel.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		58D2AC352B6FD3DF00561784 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC362B6FD3F400561784 /* AlertWithTextFieldModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		58D2AC3C2B6FF05E00561784 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC312B6F999B00561784 /* ListOfRecognizedMedicineView.swift */,
+				58D2AC382B6FE61600561784 /* CommonCleanNextButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		58D2AC3D2B6FF06700561784 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				58921A3C2B6B639E001B3ED4 /* ListOfRecognizedMedicineReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		58D2AC3E2B6FF07600561784 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58D2AC3A2B6FEB7100561784 /* SettingDetailOfMedicationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		58D2AC3F2B6FF07A00561784 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				58921A3F2B6B8425001B3ED4 /* SettingDetailOfMedicationReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,9 +606,10 @@
 			name = Pomeds;
 			packageProductDependencies = (
 				58A65D8B2B611F4F00FB92CC /* Lottie */,
-				58A65D8E2B61202000FB92CC /* ComposableArchitecture */,
 				58921A082B67CAC4001B3ED4 /* Realm */,
 				58921A0A2B67CAC4001B3ED4 /* RealmSwift */,
+				58921A2C2B6A14B2001B3ED4 /* Alamofire */,
+				58921A2F2B6A152E001B3ED4 /* ComposableArchitecture */,
 			);
 			productName = Pomeds;
 			productReference = 58A65D592B611E9000FB92CC /* Pomeds.app */;
@@ -409,8 +686,9 @@
 			mainGroup = 58A65D502B611E9000FB92CC;
 			packageReferences = (
 				58A65D8A2B611F4F00FB92CC /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				58A65D8D2B61202000FB92CC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				58921A072B67CAC4001B3ED4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				58921A2B2B6A14B2001B3ED4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				58921A2E2B6A152E001B3ED4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 58A65D5A2B611E9000FB92CC /* Products */;
 			projectDirPath = "";
@@ -429,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58A65D662B611E9400FB92CC /* Preview Assets.xcassets in Resources */,
+				586C18322B70FBC8009F1E5D /* home2.json in Resources */,
 				58A65D632B611E9400FB92CC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,22 +734,51 @@
 			buildActionMask = 2147483647;
 			files = (
 				58921A042B679F9A001B3ED4 /* LocalDataSource.swift in Sources */,
+				58921A5A2B6D5538001B3ED4 /* CameraViewModel.swift in Sources */,
+				58921A422B6B9917001B3ED4 /* Color+.swift in Sources */,
+				58D2AC322B6F999B00561784 /* ListOfRecognizedMedicineView.swift in Sources */,
 				58921A152B68D060001B3ED4 /* RegisterNewMedicationView.swift in Sources */,
 				589219F52B679BBF001B3ED4 /* Interactor.swift in Sources */,
+				58D2AC372B6FD3F400561784 /* AlertWithTextFieldModifier.swift in Sources */,
 				589219EB2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift in Sources */,
+				58D2AC272B6F649800561784 /* PhotoPostProcessHelper.swift in Sources */,
+				58921A562B6D16C6001B3ED4 /* CaptureMedicineView.swift in Sources */,
+				58D2AC392B6FE61600561784 /* CommonCleanNextButtonView.swift in Sources */,
 				589219E92B679109001B3ED4 /* MedicationIntakeInfo.swift in Sources */,
+				58921A2A2B6A1212001B3ED4 /* ServiceKey.swift in Sources */,
+				58D2AC342B6F9F7000561784 /* ProgressLoadingView.swift in Sources */,
+				58921A1C2B693154001B3ED4 /* StringLiterals.swift in Sources */,
+				586C182B2B70C202009F1E5D /* SaveNewMedicationClient.swift in Sources */,
+				58921A462B6B9AB9001B3ED4 /* HomeCircularView.swift in Sources */,
+				58921A582B6D3478001B3ED4 /* CameraView.swift in Sources */,
+				58D2AC302B6F97B000561784 /* CameraManager.swift in Sources */,
+				58921A332B6A1BD4001B3ED4 /* Encodable+.swift in Sources */,
+				58921A4C2B6BF899001B3ED4 /* HomeCTAButtonView.swift in Sources */,
 				58921A182B6910B8001B3ED4 /* OngoingMedicationClient.swift in Sources */,
+				58921A382B6A217B001B3ED4 /* VisionRecognitionClient.swift in Sources */,
 				589219F92B679D15001B3ED4 /* OngoingMedicationRepository.swift in Sources */,
 				589219F32B679B63001B3ED4 /* UseCase.swift in Sources */,
+				58921A542B6CDA7D001B3ED4 /* HomeMedicineTitleView.swift in Sources */,
 				58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */,
-				58921A022B679F79001B3ED4 /* SomeNetworkDataSource.swift in Sources */,
-				589219FE2B679F5D001B3ED4 /* SomeNetworkService.swift in Sources */,
+				58921A522B6CD602001B3ED4 /* UINavigationController+.swift in Sources */,
+				58921A212B6949B1001B3ED4 /* CaptureMedicinesReducer.swift in Sources */,
+				58921A1A2B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift in Sources */,
+				58921A252B6A057F001B3ED4 /* MedicationAPIModel.swift in Sources */,
 				589219ED2B679453001B3ED4 /* PushNotificationInfo.swift in Sources */,
+				58921A232B6A0382001B3ED4 /* MedicineSearchClient.swift in Sources */,
 				589219E72B678F6B001B3ED4 /* MedicationRecord.swift in Sources */,
+				58921A272B6A0FFD001B3ED4 /* MedicineSearchService.swift in Sources */,
 				58921A102B680EA7001B3ED4 /* HomeReducer.swift in Sources */,
+				58921A3A2B6A2DED001B3ED4 /* VisionRecognitionHelper.swift in Sources */,
+				58921A1E2B6932CC001B3ED4 /* RegisterMedicationHelperReducer.swift in Sources */,
+				58D2AC3B2B6FEB7100561784 /* SettingDetailOfMedicationView.swift in Sources */,
 				58921A122B68CBBD001B3ED4 /* HomeView.swift in Sources */,
+				58D2AC2D2B6F974C00561784 /* CaptureImageModel.swift in Sources */,
 				589219F72B679C10001B3ED4 /* Repository.swift in Sources */,
-				58921A062B67A373001B3ED4 /* OngoingMedicationDataSource.swift in Sources */,
+				58921A062B67A373001B3ED4 /* MedicationRealmDataSource.swift in Sources */,
+				58D2AC252B6F638600561784 /* PhotoPostProcessClient.swift in Sources */,
+				58921A402B6B8425001B3ED4 /* SettingDetailOfMedicationReducer.swift in Sources */,
+				58921A3D2B6B639E001B3ED4 /* ListOfRecognizedMedicineReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,11 +949,13 @@
 				INFOPLIST_FILE = Pomeds/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PoMeds;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_NSCameraUsageDescription = "약의 이름을 촬영하기 위해 후면 카메라를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,11 +989,13 @@
 				INFOPLIST_FILE = Pomeds/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PoMeds;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
+				INFOPLIST_KEY_NSCameraUsageDescription = "약의 이름을 촬영하기 위해 후면 카메라를 사용합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -846,20 +1158,28 @@
 				kind = branch;
 			};
 		};
+		58921A2B2B6A14B2001B3ED4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		58921A2E2B6A152E001B3ED4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture#Installation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.1;
+			};
+		};
 		58A65D8A2B611F4F00FB92CC /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.4.0;
-			};
-		};
-		58A65D8D2B61202000FB92CC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture#Installation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -875,15 +1195,20 @@
 			package = 58921A072B67CAC4001B3ED4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
+		58921A2C2B6A14B2001B3ED4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58921A2B2B6A14B2001B3ED4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		58921A2F2B6A152E001B3ED4 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58921A2E2B6A152E001B3ED4 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
 		58A65D8B2B611F4F00FB92CC /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 58A65D8A2B611F4F00FB92CC /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		58A65D8E2B61202000FB92CC /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 58A65D8D2B61202000FB92CC /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

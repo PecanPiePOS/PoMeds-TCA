@@ -13,12 +13,12 @@ import Foundation
  - Will Be Back
  
  */
-protocol UseCase {
-    associatedtype Request
-    associatedtype Response
-    
-    func execute(request: Request) async throws -> Response
-}
+//protocol UseCase {
+//    associatedtype Request
+//    associatedtype Response
+//    
+//    func execute(request: Request) async throws -> Response
+//}
 
 /**
  
@@ -26,10 +26,10 @@ protocol UseCase {
  - Will Be Back
  
  */
-typealias MedicationRecordInteractor = Interactor<
-    Bool,
-    [MedicationRecordItem],
-    OngoingMedicationRepository<
-        OngoingMedicationDataSource
-    >
->
+//typealias MedicationRecordInteractor = Interactor<
+//    Bool,
+//    [MedicationRecordItem],
+//    OngoingMedicationRepository<
+//        OngoingMedicationDataSource
+//    >
+//>

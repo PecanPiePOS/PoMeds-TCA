@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "3dc6a42c7727c49bf26508e29b0a0b35f9c7e1ad",
+        "version" : "5.8.1"
+      }
+    },
+    {
       "identity" : "combine-schedulers",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/combine-schedulers",
@@ -41,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",
       "state" : {
-        "revision" : "76d7791b5bda47df7e3d4690c4c3aaf089730707",
-        "version" : "1.2.1"
+        "revision" : "8cc3bc05d0cc956f7374c6c208a11f66a7cac3db",
+        "version" : "1.2.2"
       }
     },
     {
@@ -68,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture#Installation",
       "state" : {
-        "revision" : "ae491c9e3f66631e72d58db8bb4c27dfc3d3afd4",
-        "version" : "1.6.0"
+        "revision" : "776bc5c28f3beb0ab9897678b5ec63596360f786",
+        "version" : "1.7.1"
       }
     },
     {
@@ -109,6 +118,15 @@
       }
     },
     {
+      "identity" : "swift-perception",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-perception",
+      "state" : {
+        "revision" : "42240120b2a8797595433288ab4118f8042214c3",
+        "version" : "1.1.1"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax",
@@ -122,8 +140,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",
       "state" : {
-        "revision" : "78f9d72cf667adb47e2040aa373185c88c63f0dc",
-        "version" : "1.2.0"
+        "revision" : "d9e72f3083c08375794afa216fb2f89c0114f303",
+        "version" : "1.2.1"
       }
     },
     {
