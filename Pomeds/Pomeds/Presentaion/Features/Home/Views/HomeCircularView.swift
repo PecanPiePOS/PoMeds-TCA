@@ -7,12 +7,49 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+import Lottie
+
 struct HomeCircularView: View {
+    @State var store: StoreOf<HomeReducer>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            LottieView(animation: .named("home2"))
+                .animationSpeed(0.8)
+                .looping()
+                .scaleEffect(1.6)
+            
+            if store.takingMedicationList.isEmpty {
+                VStack {
+                    Text("현재 복용하고\n있는 약이 없어요.")
+                        .font(.system(size: 17, weight: .light))
+                        .foregroundStyle(Color(hex: "D0AE9F"))
+                        .multilineTextAlignment(.center)
+                }
+            } else {
+                VStack {
+                    Text("복용 중")
+                        .font(.system(size: 17, weight: .light))
+                        .foregroundStyle(Color(hex: "FFBE98"))
+                    ForEach(store.takingMedicationList.prefix(3), id: \.self) {
+                        Text($0.reasonForMedication)
+                            .font(.system(size: 20, weight: .heavy))
+                            .foregroundStyle(Color(hex: "9E7463"))
+                    }
+                }
+            }
+            
+            if store.isLoading {
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .tint(Color(hex: "FFBE98"))
+                    .controlSize(.large)
+            }
+        }
     }
 }
 
 #Preview {
-    HomeCircularView()
+    HomeCircularView(store: PomedsApp.store)
 }
