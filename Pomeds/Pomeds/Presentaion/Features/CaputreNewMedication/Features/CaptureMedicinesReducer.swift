@@ -10,7 +10,7 @@ import UIKit
 
 import ComposableArchitecture
 
-struct MovingType: Equatable {
+struct RecognizedMedicationTransferModel: Equatable {
     var nameList: [String]
     var type: MedicationType
 }
@@ -23,7 +23,6 @@ struct CaptureMedicinesReducer {
     @Dependency(\.medicineSearchData) private var searchData
     @Dependency(\.visionRecognizer) private var visionRecognizer
     @Dependency(\.cropDataWhereNeeded) private var cropHelper
-    @Dependency(\.continuousClock) private var clock
     
     @ObservableState
     struct State: Equatable {
@@ -57,7 +56,7 @@ struct CaptureMedicinesReducer {
         case photoRemoveLast
         
         case moveToNextDidTap
-        case recognizeDidEnd(MovingType)
+        case recognizeDidEnd(RecognizedMedicationTransferModel)
         case moveToSupplementsDidTap
         case resetLoading
         
@@ -72,12 +71,10 @@ struct CaptureMedicinesReducer {
             case let .captureDidTap(photoData):
                 return .run { send in
                     let croppedData = try await self.cropHelper.cropData(originalData: photoData)
-                    print(croppedData, "📌 captureDidTap")
                     await send(.postProcessPhoto(croppedData))
                 }
                 
             case .captureDisable:
-                // 왜 바로 view 에서 반영이 안될까...
                 state.isCaptureEnabled = false
                 state.isCapturingProcessLoading = true
                 return .none
@@ -85,10 +82,8 @@ struct CaptureMedicinesReducer {
             case let .postProcessPhoto(photoData):
                 state.caputredPhotoStack.append(photoData)
                 state.photoCount = state.caputredPhotoStack.count
-                print(state.photoCount, "📌", "postProcessPhoto")
                 return .run { send in
                     await send(.saveLastCapturedPhoto(UIImage(data: photoData) ?? UIImage()))
-                    try await self.clock.sleep(for: .milliseconds(1500))
                     await send(.buttonThrottle)
                 }
                 
@@ -98,8 +93,10 @@ struct CaptureMedicinesReducer {
                 }
                 
             case .buttonThrottle:
+                if state.photoCount < 8 {
+                    state.isCaptureEnabled = true
+                }
                 state.isCapturingProcessLoading = false
-                state.isCaptureEnabled = true
                 return .none
                 
             case .photoRemoveLast:
@@ -110,13 +107,16 @@ struct CaptureMedicinesReducer {
                 if state.caputredPhotoStack.isEmpty {
                     state.capturedPhoto = nil
                 }
+                if state.photoCount < 8 {
+                    state.isCaptureEnabled = true
+                }
                 return .none
                 
             case .moveToNextDidTap:
                 state.isRecognizingLoading = true
                 return .run { [stack = state.caputredPhotoStack] send in
                     if stack.isEmpty {
-                        await send(.recognizeDidEnd(MovingType(nameList: [], type: .medication)))
+                        await send(.recognizeDidEnd(RecognizedMedicationTransferModel(nameList: [], type: .medication)))
                         return
                     }
                     let namesRecognizedData = try await visionRecognizer.accept(stack)
@@ -124,7 +124,7 @@ struct CaptureMedicinesReducer {
                     if compactList.count != stack.count {
                         await send(.openAlert(compactList))
                     } else {
-                        await send(.recognizeDidEnd(MovingType(nameList: compactList, type: .medication)))
+                        await send(.recognizeDidEnd(RecognizedMedicationTransferModel(nameList: compactList, type: .medication)))
                     }
                 }
                 
@@ -141,12 +141,12 @@ struct CaptureMedicinesReducer {
                 
             case .moveToSupplementsDidTap:
                 return .run { send in
-                    await send(.recognizeDidEnd(MovingType(nameList: [], type: .supplements)))
+                    await send(.recognizeDidEnd(RecognizedMedicationTransferModel(nameList: [], type: .supplements)))
                 }
                 
             case let .alert(.presented(.confirm(names))):
                 return .run { send in
-                    await send(.recognizeDidEnd(MovingType(nameList: names, type: .medication)))
+                    await send(.recognizeDidEnd(RecognizedMedicationTransferModel(nameList: names, type: .medication)))
                 }
                 
             case let .openAlert(names):
