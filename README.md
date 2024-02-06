@@ -19,7 +19,7 @@
 ### 배경
 
 SwiftUI 와 TCA 를 연습하고자 만든 토이 프로젝트로, 출시까지 예정하고 있습니다. TCA 의 유지보수 또한 꾸준하게 블로깅이 될 예정입니다. 
-클린 아키텍쳐를 염두하여 구조를 짰지만, TCA 를 적용함에 있어 불편함으로 최소한의 관심사 분리만 진행했습니다.
+클린 아키텍쳐를 염두하여 구조를 짰지만, TCA 를 적용함에 있어 최소한의 관심사 분리만 진행했습니다.
 
 - **왜 TCA 인가?**
   
@@ -35,6 +35,17 @@ SwiftUI 와 TCA 를 연습하고자 만든 토이 프로젝트로, 출시까지 
     네이티브 코드로 만든 패턴이 아니기 때문에, 아무래도 불안정 한 점이 많았으며, 특히 디버깅에서 문제가 많이 발생할 수 있습니다.
     더욱이, 끊임 없이 업데이트가 되고 있지만 실질적으로 그 사항을 TCA 를 처음 사용해보는 개발자가 제대로, 친절하게 확인할 수 있는 곳이 많이 없는 것 같습니다. (써드파티라면 당연한 것이지만.. [v1.7 Doc](https://pointfreeco.github.io/swift-composable-architecture/1.7.0/documentation/composablearchitecture/)) Slack 채널에 직접 들어가 TCA 를 개발하고 있는 개발자와 직접 소통을 해서 알아내야 합니다. (Slack 에서 TCA 를 만들고 있는 개발자와 직접 소통한다는 것은 좀 새롭고 재밌었습니다.)
     
+---
+
+### 보완해야할 점
+- Binding 사용을 추가할 것
+  (커스텀 Alert)
+- Realm 의 Thread 문제를 해결하고 Dependency 추가
+- Camera 의 경우 ViewModel 이 아닌 Client 로 따로 Depedency 추가 
+  (이 경우, Realm 과 같이 Thread 문제를 고민하면서 해야함)
+- UseCase 와 Repository 를 Domian 에서 제대로 된 코드로 추가하기
+- 위젯 및 로컬 노티피케이션 추가
+
 ---
 
 ### 블로그
@@ -77,10 +88,27 @@ SwiftUI 와 TCA 를 연습하고자 만든 토이 프로젝트로, 출시까지 
 - RealmSwift
 - Lottie
 
+---
+
 ### 스크린 샷
+<p align="left">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/3805df81-87f9-408e-947a-ccbacf6bc88d">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/79483bf7-3713-4669-b63b-dbc1380f96d6">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/1a6a3198-2c29-412c-8b21-d338df852ede">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/97318f32-3ffc-4fa4-ab68-e0aeddbc27ae">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/6497ee24-ac72-4efe-98b8-1668d0619e9b">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/4993adba-2eac-4990-b5f4-f5700837a2ca">
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/12d95caa-6253-4546-b7b4-8ab9ec5bba85">
+</p>
 
 
+---
 
 ### 영상
-<img src="https://user-images.githubusercontent.com/51365114/119627750-716f3100-be47-11eb-8e83-686b23c2c161.png  width="200" height="400"/>
+
+  <img width="200" alt="스크린샷1" src="https://github.com/PecanPiePOS/PoMeds/assets/89404664/81075113-4bd3-4a4a-9109-5ff9b6a0195c">
+
+
+
+
 
