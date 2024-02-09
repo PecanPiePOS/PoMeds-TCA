@@ -65,6 +65,7 @@ struct SettingDetailOfMedicationReducer {
                 
             case let .medicationTypeDidSelected(type):
                 state.medicineTypeTitle = type.componentText
+                state.medicineType = type
                 return .none
                 
             case let .medicationTitleDidEndEditing(title):
@@ -126,9 +127,10 @@ struct SettingDetailOfMedicationReducer {
                         listOfPills.append(item)
                     }
                     
-                    let newMedicineModelToSave = MedicationRecordItem(isTakingNow: isTakingNow, reasonForMedication: state.medicationTitle, startDate: startDate, endDate: endDate, pillNames: listOfPills, efficacy: "", sideEffects: List<String>(), medicationType: state.medicineTypeTitle, numberOfTakingPerDay: numberOfTakingPerDay, intervalOfTaking: medicationIntervalTime, startTimeOfDay: startTimeOfTaking)
+                    let newMedicineModelToSave = MedicationRecordItem(isTakingNow: isTakingNow, reasonForMedication: state.medicationTitle, startDate: startDate, endDate: endDate, pillNames: listOfPills, efficacy: "", sideEffects: List<String>(), medicationType: state.medicineType.stringRequest, numberOfTakingPerDay: numberOfTakingPerDay, intervalOfTaking: medicationIntervalTime, startTimeOfDay: startTimeOfTaking)
                     
                     await send(.popToRootViewWith(newMedicineModelToSave))
+                    // TODO: Realm 쓰레드 문제가 해결되면 이런 UX 를 위한 코드 수정하거나 삭제하기
                     try await self.clock.sleep(for: .seconds(3))
                     await send(.errorPop)
                 }

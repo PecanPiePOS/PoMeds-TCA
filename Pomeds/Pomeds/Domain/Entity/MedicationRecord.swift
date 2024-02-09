@@ -75,7 +75,7 @@ enum MedicationType {
         case .medication:
             return "med"
         case .supplements:
-            return "supl"
+            return "suppl"
         }
     }
     
