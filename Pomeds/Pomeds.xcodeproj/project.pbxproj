@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		586650242B74B8D000FB8D4D /* ListOfPastMedicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586650232B74B8D000FB8D4D /* ListOfPastMedicationsView.swift */; };
+		586650262B74B8DC00FB8D4D /* ListOfPastMedicationsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586650252B74B8DC00FB8D4D /* ListOfPastMedicationsReducer.swift */; };
+		586650282B74B8E800FB8D4D /* ListOfOngoingMedicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586650272B74B8E800FB8D4D /* ListOfOngoingMedicationsView.swift */; };
+		5866502A2B74B92600FB8D4D /* ListOfOngoingMedicationsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586650292B74B92600FB8D4D /* ListOfOngoingMedicationsReducer.swift */; };
+		5866502C2B74C71900FB8D4D /* MedicationDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866502B2B74C71900FB8D4D /* MedicationDatabase.swift */; };
+		586650302B74E72F00FB8D4D /* CommonDetailListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5866502F2B74E72F00FB8D4D /* CommonDetailListReducer.swift */; };
+		586650342B74E74A00FB8D4D /* CommonDetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586650332B74E74A00FB8D4D /* CommonDetailListView.swift */; };
 		586C182B2B70C202009F1E5D /* SaveNewMedicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */; };
 		586C18322B70FBC8009F1E5D /* home2.json in Resources */ = {isa = PBXBuildFile; fileRef = 586C18312B70FBC8009F1E5D /* home2.json */; };
 		589219E72B678F6B001B3ED4 /* MedicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E62B678F6B001B3ED4 /* MedicationRecord.swift */; };
@@ -84,6 +91,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		586650232B74B8D000FB8D4D /* ListOfPastMedicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPastMedicationsView.swift; sourceTree = "<group>"; };
+		586650252B74B8DC00FB8D4D /* ListOfPastMedicationsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPastMedicationsReducer.swift; sourceTree = "<group>"; };
+		586650272B74B8E800FB8D4D /* ListOfOngoingMedicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfOngoingMedicationsView.swift; sourceTree = "<group>"; };
+		586650292B74B92600FB8D4D /* ListOfOngoingMedicationsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfOngoingMedicationsReducer.swift; sourceTree = "<group>"; };
+		5866502B2B74C71900FB8D4D /* MedicationDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDatabase.swift; sourceTree = "<group>"; };
+		5866502F2B74E72F00FB8D4D /* CommonDetailListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDetailListReducer.swift; sourceTree = "<group>"; };
+		586650332B74E74A00FB8D4D /* CommonDetailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDetailListView.swift; sourceTree = "<group>"; };
 		586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewMedicationClient.swift; sourceTree = "<group>"; };
 		586C18312B70FBC8009F1E5D /* home2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home2.json; sourceTree = "<group>"; };
 		589219E62B678F6B001B3ED4 /* MedicationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationRecord.swift; sourceTree = "<group>"; };
@@ -173,6 +187,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5866501C2B74B87300FB8D4D /* ListOfOngoingMedications */ = {
+			isa = PBXGroup;
+			children = (
+				586650222B74B8BB00FB8D4D /* Views */,
+				586650212B74B8B600FB8D4D /* Features */,
+			);
+			path = ListOfOngoingMedications;
+			sourceTree = "<group>";
+		};
+		5866501E2B74B88700FB8D4D /* ListOfPastMedications */ = {
+			isa = PBXGroup;
+			children = (
+				586650202B74B8B000FB8D4D /* Views */,
+				5866501F2B74B8A700FB8D4D /* Features */,
+			);
+			path = ListOfPastMedications;
+			sourceTree = "<group>";
+		};
+		5866501F2B74B8A700FB8D4D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				586650252B74B8DC00FB8D4D /* ListOfPastMedicationsReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		586650202B74B8B000FB8D4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				586650232B74B8D000FB8D4D /* ListOfPastMedicationsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		586650212B74B8B600FB8D4D /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				586650292B74B92600FB8D4D /* ListOfOngoingMedicationsReducer.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		586650222B74B8BB00FB8D4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				586650272B74B8E800FB8D4D /* ListOfOngoingMedicationsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5866502D2B74E6F300FB8D4D /* List */ = {
+			isa = PBXGroup;
+			children = (
+				5866501C2B74B87300FB8D4D /* ListOfOngoingMedications */,
+				5866501E2B74B88700FB8D4D /* ListOfPastMedications */,
+				5866502E2B74E70D00FB8D4D /* Common */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		5866502E2B74E70D00FB8D4D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5866502F2B74E72F00FB8D4D /* CommonDetailListReducer.swift */,
+				586650332B74E74A00FB8D4D /* CommonDetailListView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		586C18292B70C1E1009F1E5D /* SaveNewMedication */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,21 +297,14 @@
 		589219D92B6786B5001B3ED4 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
-				589219DB2B6786C6001B3ED4 /* Features */,
-			);
-			path = Presentaion;
-			sourceTree = "<group>";
-		};
-		589219DB2B6786C6001B3ED4 /* Features */ = {
-			isa = PBXGroup;
-			children = (
 				58921A0E2B680E9F001B3ED4 /* Home */,
 				58921A132B68D037001B3ED4 /* RegisterNewMedication */,
 				58921A1F2B694975001B3ED4 /* CaputreNewMedication */,
 				58921A3B2B6B637A001B3ED4 /* ListOfRecognizedMedicines */,
 				58921A3E2B6B83D1001B3ED4 /* SettingDetailMedication */,
+				5866502D2B74E6F300FB8D4D /* List */,
 			);
-			path = Features;
+			path = Presentaion;
 			sourceTree = "<group>";
 		};
 		589219DC2B6786D8001B3ED4 /* Resources */ = {
@@ -306,6 +382,7 @@
 				58D2AC232B6F635200561784 /* PhotoPostProcess */,
 				58921A362B6A2158001B3ED4 /* VisionRecognition */,
 				58921A342B6A1F47001B3ED4 /* OngoingMedication */,
+				5866502B2B74C71900FB8D4D /* MedicationDatabase.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -744,12 +821,16 @@
 				58D2AC272B6F649800561784 /* PhotoPostProcessHelper.swift in Sources */,
 				58921A562B6D16C6001B3ED4 /* CaptureMedicineView.swift in Sources */,
 				58D2AC392B6FE61600561784 /* CommonCleanNextButtonView.swift in Sources */,
+				586650302B74E72F00FB8D4D /* CommonDetailListReducer.swift in Sources */,
 				589219E92B679109001B3ED4 /* MedicationIntakeInfo.swift in Sources */,
 				58921A2A2B6A1212001B3ED4 /* ServiceKey.swift in Sources */,
 				58D2AC342B6F9F7000561784 /* ProgressLoadingView.swift in Sources */,
 				58921A1C2B693154001B3ED4 /* StringLiterals.swift in Sources */,
 				586C182B2B70C202009F1E5D /* SaveNewMedicationClient.swift in Sources */,
+				5866502C2B74C71900FB8D4D /* MedicationDatabase.swift in Sources */,
+				586650262B74B8DC00FB8D4D /* ListOfPastMedicationsReducer.swift in Sources */,
 				58921A462B6B9AB9001B3ED4 /* HomeCircularView.swift in Sources */,
+				5866502A2B74B92600FB8D4D /* ListOfOngoingMedicationsReducer.swift in Sources */,
 				58921A582B6D3478001B3ED4 /* CameraView.swift in Sources */,
 				58D2AC302B6F97B000561784 /* CameraManager.swift in Sources */,
 				58921A332B6A1BD4001B3ED4 /* Encodable+.swift in Sources */,
@@ -759,8 +840,10 @@
 				589219F92B679D15001B3ED4 /* OngoingMedicationRepository.swift in Sources */,
 				589219F32B679B63001B3ED4 /* UseCase.swift in Sources */,
 				58921A542B6CDA7D001B3ED4 /* HomeMedicineTitleView.swift in Sources */,
+				586650242B74B8D000FB8D4D /* ListOfPastMedicationsView.swift in Sources */,
 				58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */,
 				58921A522B6CD602001B3ED4 /* UINavigationController+.swift in Sources */,
+				586650282B74B8E800FB8D4D /* ListOfOngoingMedicationsView.swift in Sources */,
 				58921A212B6949B1001B3ED4 /* CaptureMedicinesReducer.swift in Sources */,
 				58921A1A2B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift in Sources */,
 				58921A252B6A057F001B3ED4 /* MedicationAPIModel.swift in Sources */,
@@ -779,6 +862,7 @@
 				58D2AC252B6F638600561784 /* PhotoPostProcessClient.swift in Sources */,
 				58921A402B6B8425001B3ED4 /* SettingDetailOfMedicationReducer.swift in Sources */,
 				58921A3D2B6B639E001B3ED4 /* ListOfRecognizedMedicineReducer.swift in Sources */,
+				586650342B74E74A00FB8D4D /* CommonDetailListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

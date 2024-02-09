@@ -100,7 +100,9 @@ struct HomeReducer {
                 
             case let .path(action):
                 switch action {
-                case .element(id: _, action: .registerNewMedication(.moveToNextButtonDidTap)):
+                case .element(id: _, action:
+                    .registerNewMedication(.moveToNextButtonDidTap)):
+                    /// 여기 참고해서!
                     state.path.append(.captureImageScene())
                     return .none
                 case .element(id: _, action: .captureImage(.recognizeDidEnd(let data))):
@@ -111,6 +113,12 @@ struct HomeReducer {
                     return .none
                 case .element(id: _, action: .listOfRecognizedMedicines(.popToRootView)):
                     state.path.removeAll()
+                    return .none
+                case .element(id: _, action: .listOfOngoingMedication(.cellDidTapWith(let id, let title))):
+                    state.path.append(.detailOfOngoingMedicationScene(.init(medicationTitle: title, isOngoing: true, id: id)))
+                    return .none
+                case .element(id: _, action: .listOfPastMedication(.cellDidTapWith(let id, let title))):
+                    state.path.append(.detailOfPastMedicationScene(.init(medicationTitle: title, isOngoing: false, id: id)))
                     return .none
                 case .element(id: _, action: .settingDetailOfMedication(.popToRootViewWith(let newMedication))):
                     let success = registerNewMedicine(newMedication: newMedication)
@@ -202,9 +210,11 @@ extension HomeReducer {
             case captureImageScene(CaptureMedicinesReducer.State = .init())
             case listOfRecognizedMedicinesScene(ListOfRecognizedMedicineReducer.State)
             case settingDetailOfMedicationScene(SettingDetailOfMedicationReducer.State)
+            case listOfOngoingMedicationScene(ListOfOngoingMedicationsReducer.State = .init())
+            case listOfPastMedicationScene(ListOfPastMedicationsReducer.State = .init())
+            case detailOfOngoingMedicationScene(CommonDetailListReducer.State)
+            case detailOfPastMedicationScene(CommonDetailListReducer.State)
             
-//            case listOfOngoingMedicationScene()
-//            case listOfPastMedicationScene()
 //            case myPageScene()
 //            case manageSideEffectsScene()
         }
@@ -214,8 +224,12 @@ extension HomeReducer {
             case captureImage(CaptureMedicinesReducer.Action)
             case listOfRecognizedMedicines(ListOfRecognizedMedicineReducer.Action)
             case settingDetailOfMedication(SettingDetailOfMedicationReducer.Action)
-//            case listOfOngoingMedication
-//            case listOfPastMedication
+            case listOfOngoingMedication(ListOfOngoingMedicationsReducer.Action)
+            case listOfPastMedication(ListOfPastMedicationsReducer.Action)
+            case detailOfOngoingMedication(CommonDetailListReducer.Action)
+            case detailOfPastMedication(CommonDetailListReducer.Action)
+            
+            
 //            case myPage
 //            case manageSideEffects
         }
@@ -232,6 +246,18 @@ extension HomeReducer {
             }
             Scope(state: \.settingDetailOfMedicationScene, action: \.settingDetailOfMedication) {
                 SettingDetailOfMedicationReducer()
+            }
+            Scope(state: \.listOfOngoingMedicationScene, action: \.listOfOngoingMedication) {
+                ListOfOngoingMedicationsReducer()
+            }
+            Scope(state: \.listOfPastMedicationScene, action: \.listOfPastMedication) {
+                ListOfPastMedicationsReducer()
+            }
+            Scope(state: \.detailOfOngoingMedicationScene, action: \.detailOfOngoingMedication) {
+                CommonDetailListReducer()
+            }
+            Scope(state: \.detailOfPastMedicationScene, action: \.detailOfPastMedication) {
+                CommonDetailListReducer()
             }
         }
     }
