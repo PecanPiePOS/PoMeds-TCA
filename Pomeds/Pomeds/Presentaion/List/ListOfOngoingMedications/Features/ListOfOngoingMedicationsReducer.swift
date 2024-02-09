@@ -16,7 +16,7 @@ struct MedicationListModel: Equatable {
 }
 
 @Reducer
-struct SomeFeature {
+struct ListOfOngoingMedicationsReducer {
     typealias MedicationData = MedicationRecordItem
     
     @Dependency(\.medicationDatabase) var database
@@ -31,6 +31,8 @@ struct SomeFeature {
         case onAppear
         case medicationListResponse([MedicationData])
         case supplementsListResponse([MedicationData])
+
+        case cellDidTapWith(id: ObjectId, title: String)
     }
     
     var body: some ReducerOf<Self> {
@@ -39,15 +41,16 @@ struct SomeFeature {
             case .onAppear:
                 return .run { send in
                     let ongoingList = try await self.database.fetchOngoingMeications()
-                    let pastList = try await self.database.fetchPastMedications()
-                    await send(.medicationListResponse(ongoingList))
-                    await send(.supplementsListResponse(pastList))
+                    await send(.medicationListResponse(ongoingList.filter({ $0.medicationType == "med" })))
+                    await send(.supplementsListResponse(ongoingList.filter{ $0.medicationType == "suppl" }))
                 }
             case let .medicationListResponse(list):
                 state.ongoingMedicationList = list
                 return .none
             case let .supplementsListResponse(list):
                 state.ongoingSupplementList = list
+                return .none
+            case let .cellDidTapWith(id, title):
                 return .none
             }
         }

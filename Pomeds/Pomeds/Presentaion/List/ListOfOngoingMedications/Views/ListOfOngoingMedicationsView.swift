@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+
 struct ListOfOngoingMedicationsView: View {
+    @State var store: StoreOf<ListOfOngoingMedicationsReducer>
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    ListOfOngoingMedicationsView()
+    ListOfOngoingMedicationsView(store: Store(initialState: ListOfOngoingMedicationsReducer.State(), reducer: {
+        ListOfOngoingMedicationsReducer()
+    }))
 }
