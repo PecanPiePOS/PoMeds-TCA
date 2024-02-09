@@ -9,18 +9,13 @@ import Foundation
 
 import RealmSwift
 
-@globalActor
-actor BackgroundActor: GlobalActor {
-    static var shared = BackgroundActor()
-}
-
 /**
  https://github.com/realm/realm-swift/discussions/7685
  */
 struct MedicationRealmDataSource {
-//    
-//    static let shared = MedicationRealmDataSource()
-//    private init() {}
+
+    static let shared = MedicationRealmDataSource()
+    private init() {}
         
     static func list(request: Bool, completion: @escaping ([MedicationRecordItem]) -> Void) async throws {
         DispatchQueue.main.async {
@@ -37,6 +32,7 @@ struct MedicationRealmDataSource {
     }
     
     static func add(entity: MedicationRecordItem) async throws -> Bool {
+        
         let realm = try! await Realm()
 
         do {
