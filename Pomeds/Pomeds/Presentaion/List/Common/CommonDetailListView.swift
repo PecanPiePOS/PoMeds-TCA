@@ -7,12 +7,19 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+import RealmSwift
+
 struct CommonDetailListView: View {
+    @State var store: StoreOf<CommonDetailListReducer>
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    CommonDetailListView()
+    CommonDetailListView(store: Store(initialState: CommonDetailListReducer.State(medicationTitle: "약1", isOngoing: true, id: ObjectId("aa")), reducer: {
+        CommonDetailListReducer()
+    }))
 }
