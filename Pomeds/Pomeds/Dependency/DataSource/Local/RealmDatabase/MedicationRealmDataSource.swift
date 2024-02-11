@@ -26,7 +26,6 @@ struct MedicationRealmDataSource {
                 .forEach {
                 list.append($0)
             }
-            print(list, "📌📌📌")
             completion(list)
         }
     }
