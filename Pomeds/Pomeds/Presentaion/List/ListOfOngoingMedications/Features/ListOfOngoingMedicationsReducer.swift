@@ -10,14 +10,14 @@ import Foundation
 import ComposableArchitecture
 import RealmSwift
 
-struct MedicationListModel: Equatable {
-    var _id: ObjectId
+struct MedicationListModel: Equatable, Identifiable {
+    var id: ObjectId
     var medicationTitle: String
 }
 
 @Reducer
 struct ListOfOngoingMedicationsReducer {
-    typealias MedicationData = MedicationRecordItem
+    typealias MedicationData = MedicationRecord
     
     @Dependency(\.medicationDatabase) var database
     
@@ -40,17 +40,19 @@ struct ListOfOngoingMedicationsReducer {
             switch action {
             case .onAppear:
                 return .run { send in
-                    let ongoingList = try await self.database.fetchOngoingMeications()
-                    await send(.medicationListResponse(ongoingList.filter({ $0.medicationType == "med" })))
-                    await send(.supplementsListResponse(ongoingList.filter{ $0.medicationType == "suppl" }))
+                    let ongoingList = Array(try await self.database.fetchOngoingMedications())
+                    await send(.medicationListResponse(ongoingList))
+//                        .filter({ $0.medicationType == "med" })))
+                    await send(.supplementsListResponse(ongoingList))
+//                        .filter{ $0.medicationType == "suppl" }))
                 }
             case let .medicationListResponse(list):
-                state.ongoingMedicationList = list
+                state.ongoingMedicationList = list.filter { $0.medicationType == "med" }
                 return .none
             case let .supplementsListResponse(list):
-                state.ongoingSupplementList = list
+                state.ongoingSupplementList = list.filter { $0.medicationType == "suppl" }
                 return .none
-            case let .cellDidTapWith(id, title):
+            case .cellDidTapWith:
                 return .none
             }
         }

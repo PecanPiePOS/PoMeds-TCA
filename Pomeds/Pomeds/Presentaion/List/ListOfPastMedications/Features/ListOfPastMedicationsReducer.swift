@@ -12,7 +12,7 @@ import RealmSwift
 
 @Reducer
 struct ListOfPastMedicationsReducer {
-    typealias MedicationData = MedicationRecordItem
+    typealias MedicationData = MedicationRecord
     
     @Dependency(\.medicationDatabase) var database
     
@@ -35,17 +35,17 @@ struct ListOfPastMedicationsReducer {
             switch action {
             case .onAppear:
                 return .run { send in
-                    let pastList = try await self.database.fetchPastMedications()
-                    await send(.medicationListResponse(pastList.filter({ $0.medicationType == "med" })))
-                    await send(.supplementsListResponse(pastList.filter{ $0.medicationType == "suppl" }))
+                    let pastList = Array(try await self.database.fetchPastMedications())
+                    await send(.medicationListResponse(pastList))
+                    await send(.supplementsListResponse(pastList))
                 }
             case let .medicationListResponse(list):
-                state.pastMedicationList = list
+                state.pastMedicationList = list.filter { $0.medicationType == "med" }
                 return .none
             case let .supplementsListResponse(list):
-                state.pastSupplementList = list
+                state.pastSupplementList = list.filter { $0.medicationType == "suppl" }
                 return .none
-            case let .cellDidTapWith(id, title):
+            case .cellDidTapWith:
                 return .none
             }
         }
