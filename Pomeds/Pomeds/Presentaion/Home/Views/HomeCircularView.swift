@@ -26,15 +26,17 @@ struct HomeCircularView: View {
                         .font(.system(size: 17, weight: .light))
                         .foregroundStyle(Color(hex: "D0AE9F"))
                         .multilineTextAlignment(.center)
+                        .opacity(store.isLoading ? 0.4: 1)
                 }
             } else {
                 VStack {
                     Text("복용 중")
-                        .font(.system(size: 17, weight: .light))
+                        .font(.system(size: 17, weight: .regular))
                         .foregroundStyle(Color(hex: "FFBE98"))
+                        .padding(2)
                     ForEach(store.takingMedicationList.prefix(3), id: \.self) {
                         Text($0.reasonForMedication)
-                            .font(.system(size: 20, weight: .heavy))
+                            .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(Color(hex: "9E7463"))
                     }
                 }
