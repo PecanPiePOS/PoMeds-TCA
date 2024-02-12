@@ -50,10 +50,6 @@ struct HomeView: View {
                         .frame(width: 260, height: 260)
                         .padding(.top, 40)
                     
-                    if !store.takingMedicationList.isEmpty {
-                        
-                    }
-                    
                     NavigationLink(state: HomeReducer.Path.State.registerNewMedicationScene()) {
                         HomeCTAButtonView(primaryText: "New Medication", secondaryText: "새로운 약 등록하기", backgroundColor: Color(hex: "FEC5AC"))
                             .padding(.horizontal, 15)
@@ -110,11 +106,11 @@ struct HomeView: View {
                 }
             case .listOfOngoingMedicationScene:
                 if let store = store.scope(state: \.listOfOngoingMedicationScene, action: \.listOfOngoingMedication) {
-                    ListOfOngoingMedicationsView(store: store)
+                    ListOfOngoingMedicationsView(store: store, rootStore: self.store)
                 }
             case .listOfPastMedicationScene:
                 if let store = store.scope(state: \.listOfPastMedicationScene, action: \.listOfPastMedication) {
-                    ListOfPastMedicationsView(store: store)
+                    ListOfPastMedicationsView(store: store, rootStore: self.store)
                 }
             case .detailOfOngoingMedicationScene:
                 if let store = store.scope(state: \.detailOfOngoingMedicationScene, action: \.detailOfOngoingMedication) {
@@ -133,6 +129,9 @@ struct HomeView: View {
             if newValue == true {
                 store.send(.onAppear)
             }
+        }
+        .onDisappear {
+            print("📌📌📌📌")
         }
     }
 }

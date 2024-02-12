@@ -13,7 +13,7 @@ import RealmSwift
 @Reducer
 struct SettingDetailOfMedicationReducer {
     @Dependency(\.continuousClock) var clock
-    @Dependency(\.saveMedicationData) var saveData
+    @Dependency(\.medicationDatabase) var database
     
     @ObservableState
     struct State: Equatable {
@@ -50,7 +50,8 @@ struct SettingDetailOfMedicationReducer {
         
         case errorPop
         case resetError
-        case popToRootViewWith(MedicationRecordItem)
+        case popToRootView
+//        case popToRootViewWith(MedicationRecordItem)
     }
     
     var body: some ReducerOf<Self> {
@@ -113,7 +114,6 @@ struct SettingDetailOfMedicationReducer {
                         return
                     }
                     
-                    
                     let listOfPills = List<String>()
                     var isTakingNow: Bool
                     let now = Date().addingTimeInterval(3600)
@@ -129,10 +129,12 @@ struct SettingDetailOfMedicationReducer {
                     
                     let newMedicineModelToSave = MedicationRecordItem(isTakingNow: isTakingNow, reasonForMedication: state.medicationTitle, startDate: startDate, endDate: endDate, pillNames: listOfPills, efficacy: "", sideEffects: List<String>(), medicationType: state.medicineType.stringRequest, numberOfTakingPerDay: numberOfTakingPerDay, intervalOfTaking: medicationIntervalTime, startTimeOfDay: startTimeOfTaking)
                     
-                    await send(.popToRootViewWith(newMedicineModelToSave))
-                    // TODO: Realm 쓰레드 문제가 해결되면 이런 UX 를 위한 코드 수정하거나 삭제하기
-                    try await self.clock.sleep(for: .seconds(3))
-                    await send(.errorPop)
+                    let success = try await self.database.save(medication: newMedicineModelToSave)
+                    if success {
+                        await send(.popToRootView)
+                    } else {
+                        await send(.errorPop)
+                    }
                 }
                 
             case .errorPop:
@@ -147,7 +149,7 @@ struct SettingDetailOfMedicationReducer {
                 state.isErrorHappened = false
                 return .none
 
-            case .popToRootViewWith:
+            case .popToRootView:
                 return .none
             }
         }

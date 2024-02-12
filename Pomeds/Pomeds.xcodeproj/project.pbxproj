@@ -16,6 +16,7 @@
 		586650342B74E74A00FB8D4D /* CommonDetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586650332B74E74A00FB8D4D /* CommonDetailListView.swift */; };
 		586C182B2B70C202009F1E5D /* SaveNewMedicationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */; };
 		586C18322B70FBC8009F1E5D /* home2.json in Resources */ = {isa = PBXBuildFile; fileRef = 586C18312B70FBC8009F1E5D /* home2.json */; };
+		58837CD72B79F6C300CAF1B3 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58837CD62B79F6C300CAF1B3 /* Date+.swift */; };
 		589219E72B678F6B001B3ED4 /* MedicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E62B678F6B001B3ED4 /* MedicationRecord.swift */; };
 		589219E92B679109001B3ED4 /* MedicationIntakeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */; };
 		589219EB2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */; };
@@ -62,6 +63,8 @@
 		58A65D7C2B611E9400FB92CC /* PomedsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D7B2B611E9400FB92CC /* PomedsUITests.swift */; };
 		58A65D7E2B611E9400FB92CC /* PomedsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A65D7D2B611E9400FB92CC /* PomedsUITestsLaunchTests.swift */; };
 		58A65D8C2B611F4F00FB92CC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 58A65D8B2B611F4F00FB92CC /* Lottie */; };
+		58A928F52B78CBE7002991CE /* CommonDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A928F42B78CBE7002991CE /* CommonDetailHeaderView.swift */; };
+		58ADE8762B7A44D400DED799 /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ADE8752B7A44D400DED799 /* RealmDatabase.swift */; };
 		58D2AC252B6F638600561784 /* PhotoPostProcessClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC242B6F638600561784 /* PhotoPostProcessClient.swift */; };
 		58D2AC272B6F649800561784 /* PhotoPostProcessHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC262B6F649800561784 /* PhotoPostProcessHelper.swift */; };
 		58D2AC2D2B6F974C00561784 /* CaptureImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2AC2C2B6F974C00561784 /* CaptureImageModel.swift */; };
@@ -100,6 +103,7 @@
 		586650332B74E74A00FB8D4D /* CommonDetailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDetailListView.swift; sourceTree = "<group>"; };
 		586C182A2B70C202009F1E5D /* SaveNewMedicationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewMedicationClient.swift; sourceTree = "<group>"; };
 		586C18312B70FBC8009F1E5D /* home2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home2.json; sourceTree = "<group>"; };
+		58837CD62B79F6C300CAF1B3 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		589219E62B678F6B001B3ED4 /* MedicationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationRecord.swift; sourceTree = "<group>"; };
 		589219E82B679109001B3ED4 /* MedicationIntakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationIntakeInfo.swift; sourceTree = "<group>"; };
 		589219EA2B679259001B3ED4 /* SimplifiedMedicationIntakeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplifiedMedicationIntakeInfo.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 		58A65D772B611E9400FB92CC /* PomedsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomedsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A65D7B2B611E9400FB92CC /* PomedsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsUITests.swift; sourceTree = "<group>"; };
 		58A65D7D2B611E9400FB92CC /* PomedsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomedsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		58A928F42B78CBE7002991CE /* CommonDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDetailHeaderView.swift; sourceTree = "<group>"; };
+		58ADE8752B7A44D400DED799 /* RealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
 		58D2AC242B6F638600561784 /* PhotoPostProcessClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostProcessClient.swift; sourceTree = "<group>"; };
 		58D2AC262B6F649800561784 /* PhotoPostProcessHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPostProcessHelper.swift; sourceTree = "<group>"; };
 		58D2AC2C2B6F974C00561784 /* CaptureImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureImageModel.swift; sourceTree = "<group>"; };
@@ -242,18 +248,19 @@
 			children = (
 				5866501C2B74B87300FB8D4D /* ListOfOngoingMedications */,
 				5866501E2B74B88700FB8D4D /* ListOfPastMedications */,
-				5866502E2B74E70D00FB8D4D /* Common */,
+				5866502E2B74E70D00FB8D4D /* CommonDetail */,
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		5866502E2B74E70D00FB8D4D /* Common */ = {
+		5866502E2B74E70D00FB8D4D /* CommonDetail */ = {
 			isa = PBXGroup;
 			children = (
 				5866502F2B74E72F00FB8D4D /* CommonDetailListReducer.swift */,
 				586650332B74E74A00FB8D4D /* CommonDetailListView.swift */,
+				58A928F42B78CBE7002991CE /* CommonDetailHeaderView.swift */,
 			);
-			path = Common;
+			path = CommonDetail;
 			sourceTree = "<group>";
 		};
 		586C18292B70C1E1009F1E5D /* SaveNewMedication */ = {
@@ -378,11 +385,11 @@
 			isa = PBXGroup;
 			children = (
 				58921A032B679F9A001B3ED4 /* LocalDataSource.swift */,
+				5866502B2B74C71900FB8D4D /* MedicationDatabase.swift */,
 				586C18292B70C1E1009F1E5D /* SaveNewMedication */,
 				58D2AC232B6F635200561784 /* PhotoPostProcess */,
 				58921A362B6A2158001B3ED4 /* VisionRecognition */,
-				58921A342B6A1F47001B3ED4 /* OngoingMedication */,
-				5866502B2B74C71900FB8D4D /* MedicationDatabase.swift */,
+				58921A342B6A1F47001B3ED4 /* RealmDatabase */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -445,17 +452,19 @@
 				58921A322B6A1BD4001B3ED4 /* Encodable+.swift */,
 				58921A412B6B9917001B3ED4 /* Color+.swift */,
 				58921A512B6CD602001B3ED4 /* UINavigationController+.swift */,
+				58837CD62B79F6C300CAF1B3 /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		58921A342B6A1F47001B3ED4 /* OngoingMedication */ = {
+		58921A342B6A1F47001B3ED4 /* RealmDatabase */ = {
 			isa = PBXGroup;
 			children = (
 				58921A172B6910B8001B3ED4 /* OngoingMedicationClient.swift */,
 				58921A052B67A373001B3ED4 /* MedicationRealmDataSource.swift */,
+				58ADE8752B7A44D400DED799 /* RealmDatabase.swift */,
 			);
-			path = OngoingMedication;
+			path = RealmDatabase;
 			sourceTree = "<group>";
 		};
 		58921A352B6A1F5D001B3ED4 /* MedicationSearch */ = {
@@ -832,6 +841,7 @@
 				58921A462B6B9AB9001B3ED4 /* HomeCircularView.swift in Sources */,
 				5866502A2B74B92600FB8D4D /* ListOfOngoingMedicationsReducer.swift in Sources */,
 				58921A582B6D3478001B3ED4 /* CameraView.swift in Sources */,
+				58837CD72B79F6C300CAF1B3 /* Date+.swift in Sources */,
 				58D2AC302B6F97B000561784 /* CameraManager.swift in Sources */,
 				58921A332B6A1BD4001B3ED4 /* Encodable+.swift in Sources */,
 				58921A4C2B6BF899001B3ED4 /* HomeCTAButtonView.swift in Sources */,
@@ -843,7 +853,9 @@
 				586650242B74B8D000FB8D4D /* ListOfPastMedicationsView.swift in Sources */,
 				58A65D5D2B611E9000FB92CC /* PomedsApp.swift in Sources */,
 				58921A522B6CD602001B3ED4 /* UINavigationController+.swift in Sources */,
+				58A928F52B78CBE7002991CE /* CommonDetailHeaderView.swift in Sources */,
 				586650282B74B8E800FB8D4D /* ListOfOngoingMedicationsView.swift in Sources */,
+				58ADE8762B7A44D400DED799 /* RealmDatabase.swift in Sources */,
 				58921A212B6949B1001B3ED4 /* CaptureMedicinesReducer.swift in Sources */,
 				58921A1A2B6930BC001B3ED4 /* RegisterNewMedicationReducer.swift in Sources */,
 				58921A252B6A057F001B3ED4 /* MedicationAPIModel.swift in Sources */,

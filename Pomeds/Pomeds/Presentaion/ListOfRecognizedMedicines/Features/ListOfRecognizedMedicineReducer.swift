@@ -113,7 +113,6 @@ struct ListOfRecognizedMedicineReducer {
                 
             case let .removeDidTap(indexSet):
                 state.recognizedList.remove(atOffsets: indexSet)
-                print(state.recognizedList, "📌📌")
                 return .none
                 
             case .resetData:
