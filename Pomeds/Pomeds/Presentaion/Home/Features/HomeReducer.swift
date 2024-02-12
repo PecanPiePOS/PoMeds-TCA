@@ -14,15 +14,10 @@ import RealmSwift
 
 @Reducer
 struct HomeReducer {
-    typealias TakingMedication = MedicationRecordItem
-    @Dependency(\.ongoingMedicationData) var medicationData
+    typealias TakingMedication = MedicationRecord
+    
+    @Dependency(\.medicationDatabase) var database
     @Dependency(\.continuousClock) var clock
-    
-    private(set) var localRealm: Realm?
-    
-    init() {
-        openRealm()
-    }
     
     @ObservableState
     struct State: Equatable {
@@ -64,14 +59,14 @@ struct HomeReducer {
             switch action {
             case .onAppear:
                 state.isLoading = true
-                state.takingMedicationList = fetchOngoingMedications()
-                state.isLoading = false
-                return .none
+                return .run { send in
+                    await send(.fetchOngoingMedication)
+                }
                 
             case .fetchOngoingMedication:
                 return .run { send in
                     do {
-                        let response = try await medicationData.fetch()
+                        let response = try await database.fetchOngoingMedications()
                         await send(.fetchedData(.success(response)))
                     } catch let error {
                         await send(.fetchedData(.failure(error)))
@@ -102,7 +97,6 @@ struct HomeReducer {
                 switch action {
                 case .element(id: _, action:
                     .registerNewMedication(.moveToNextButtonDidTap)):
-                    /// 여기 참고해서!
                     state.path.append(.captureImageScene())
                     return .none
                 case .element(id: _, action: .captureImage(.recognizeDidEnd(let data))):
@@ -115,23 +109,17 @@ struct HomeReducer {
                     state.path.removeAll()
                     return .none
                 case .element(id: _, action: .listOfOngoingMedication(.cellDidTapWith(let id, let title))):
-                    state.path.append(.detailOfOngoingMedicationScene(.init(medicationTitle: title, isOngoing: true, id: id)))
+                    state.path.append(.detailOfOngoingMedicationScene(.init(medicationTitle: title, isOngoing: true, itemId: id)))
                     return .none
                 case .element(id: _, action: .listOfPastMedication(.cellDidTapWith(let id, let title))):
-                    state.path.append(.detailOfPastMedicationScene(.init(medicationTitle: title, isOngoing: false, id: id)))
+                    state.path.append(.detailOfPastMedicationScene(.init(medicationTitle: title, isOngoing: false, itemId: id)))
                     return .none
-                case .element(id: _, action: .settingDetailOfMedication(.popToRootViewWith(let newMedication))):
-                    let success = registerNewMedicine(newMedication: newMedication)
-                    switch success {
-                    case true:
+                case .element(id: _, action: .settingDetailOfMedication(.popToRootView)):
                         state.path.removeAll()
                         return .run { send in
                             try await self.clock.sleep(for: .seconds(1))
                             await send(.showNewRegisterSuccessToast)
                         }
-                    case false:
-                        return .none
-                    }
                 default:
                     return .none
                 }
@@ -139,12 +127,6 @@ struct HomeReducer {
             case .popToRoot:
                 state.path.removeAll()
                 return .none
-                //            case .registerNewMedicationDidTap:
-                //
-                //            case .ongoingMedicationsDidTap:
-                //
-                //            case .pastMedicationDidTap:
-                //
                 //            case .myPageDidTap:
                 //
                 //            case .sideEffectsWhenAvailableDidTap:
@@ -152,50 +134,6 @@ struct HomeReducer {
         }
         .forEach(\.path, action: \.path) {
             Path()
-        }
-    }
-    
-    mutating
-    func openRealm() {
-        do {
-            let configuration = Realm.Configuration(schemaVersion: UInt64(ServiceKey.realmSchemaVersion))
-            Realm.Configuration.defaultConfiguration = configuration
-            self.localRealm = try Realm()
-        } catch {
-            print("Error opening Realm : \(error)")
-        }
-    }
-    
-    private func fetchOngoingMedications() -> [MedicationRecordItem] {
-        if let localRealm {
-            let now = Date()
-            
-            let incomingMedicationsList = localRealm
-                .objects(MedicationRecordItem.self)
-                .filter { $0.endDate > now }
-            let ongoingMedications = incomingMedicationsList
-                .filter { now > $0.startDate }
-            
-            print("📌realm", ongoingMedications)
-            return Array(ongoingMedications)
-        } else {
-            return []
-        }
-    }
-    
-    private func registerNewMedicine(newMedication: MedicationRecordItem) -> Bool {
-        if let localRealm {
-            do {
-                try localRealm.write {
-                    localRealm.add(newMedication)
-                }
-                return true
-            } catch let error  {
-                print("Error adding data: <\(error)>")
-                return false
-            }
-        } else {
-            return false
         }
     }
 }
@@ -214,7 +152,6 @@ extension HomeReducer {
             case listOfPastMedicationScene(ListOfPastMedicationsReducer.State = .init())
             case detailOfOngoingMedicationScene(CommonDetailListReducer.State)
             case detailOfPastMedicationScene(CommonDetailListReducer.State)
-            
 //            case myPageScene()
 //            case manageSideEffectsScene()
         }
@@ -228,7 +165,6 @@ extension HomeReducer {
             case listOfPastMedication(ListOfPastMedicationsReducer.Action)
             case detailOfOngoingMedication(CommonDetailListReducer.Action)
             case detailOfPastMedication(CommonDetailListReducer.Action)
-            
             
 //            case myPage
 //            case manageSideEffects
