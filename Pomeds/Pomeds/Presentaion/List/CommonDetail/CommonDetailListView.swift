@@ -14,41 +14,69 @@ struct CommonDetailListView: View {
     @State var store: StoreOf<CommonDetailListReducer>
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("복용 기간")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.black)
-                Spacer()
-                Text("\(store.startDate) ~ \(store.endDate)")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.black)
-            }
-            
-            HStack {
-                Text("내게 발생한 부작용")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.black)
-                Spacer()
-                Text(store.sideEffects.isEmpty ? "없음": "\(store.sideEffects.count)")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.black)
+        ScrollView {
+            ZStack {
+                LazyVStack(alignment: .leading, pinnedViews: [.sectionHeaders]) {
+                    Section {
+                        ForEach(store.medicineDetailList, id: \.self) { item in
+                            Text("💊 \(item)")
+                                .padding()
+                                .foregroundStyle(.black)
+                                .font(.system(size: 17, weight: .bold))
+                        }
+                    } header: {
+                        CommonDetailHeaderView(startDate: store.startDate, endDate: store.endDate, sideEffects: store.sideEffects)
+                            .background(.white)
+                            .padding(.bottom, 10)
+                            .padding(.horizontal, 15)
+                    }
+                }
+                
+                if store.isLoading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .tint(Color(hex: "FFBE98"))
+                        .controlSize(.large)
+                }
             }
         }
-        .padding(15)
+        .alert(store: self.store.scope(state: \.$alert, action: \.alert))
         .navigationTitle(store.medicationTitle)
         .navigationBarTitleDisplayMode(.large)
-//        .toolbar {
-//            ToolbarItem(placement: .topBarLeading) {
-//                Button(action: {
-//                    store.send(.a)
-//                }, label: {
-//                    Text("삭제")
-//                        .font(.system(size: 17, weight: .medium))
-//                        .foregroundStyle(.red)
-//                })
-//            }
+        .onAppear {
+            store.send(.onAppear)
+            print("📌", store.itemId)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    store.send(.deleteDidTap)
+                }, label: {
+                    Text("삭제")
+                        .font(.system(size: 17, weight: .medium))
+                        .foregroundStyle(.red)
+                })
+            }
+        }
+//        .onAppear {
+//            let appearance = UINavigationBarAppearance()
+//            appearance.configureWithOpaqueBackground()
+//            appearance.backgroundColor = UIColor.blue // Set your desired color
+//            
+//            // Customize navigation bar title color
+//            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+//            
+//            // Apply the appearance settings to specific navigation bar instances
+//            UINavigationBar.appearance().standardAppearance = appearance
+//            UINavigationBar.appearance().compactAppearance = appearance // Optional
+//            UINavigationBar.appearance().scrollEdgeAppearance = appearance
 //        }
+        
+        
+//        .navigationback
+//        .clipped()
+
+
     }
 }
 

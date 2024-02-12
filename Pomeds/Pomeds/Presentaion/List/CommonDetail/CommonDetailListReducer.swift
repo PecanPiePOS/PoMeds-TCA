@@ -14,7 +14,9 @@ import RealmSwift
 struct CommonDetailListReducer {
     typealias MedicineName = String
     
+    @Dependency(\.continuousClock) var clock
     @Dependency(\.medicationDatabase) var database
+    @Dependency(\.dismiss) var dismiss
     
     @ObservableState
     struct State: Equatable {
@@ -22,7 +24,7 @@ struct CommonDetailListReducer {
         
         var medicationTitle: String
         var isOngoing: Bool
-        let id: ObjectId
+        let itemId: ObjectId
         var medicineDetailList: [MedicineName] = []
         var startDate: Date = Date()
         var endDate: Date = Date()
@@ -34,14 +36,14 @@ struct CommonDetailListReducer {
     
     enum Action {
         case onAppear
-        case medicineDataFound(MedicationRecordItem)
+        case medicineDataFound(MedicationRecord)
         case fetchingDataFailed
         case deleteDidTap
         case alert(PresentationAction<Alert>)
         case deleteConfirmed
-        
+        case deleteFailed
         enum Alert: Equatable {
-            case deleteConfrimed
+            case confirmDelete
         }
     }
     
@@ -50,7 +52,7 @@ struct CommonDetailListReducer {
             switch action {
             case .onAppear:
                 state.isLoading = true
-                return .run { [id = state.id] send in
+                return .run { [id = state.itemId] send in
                     let data = try await self.database.fetchObjectWithId(id)
                     if let data {
                         await send(.medicineDataFound(data))
@@ -76,7 +78,7 @@ struct CommonDetailListReducer {
                 state.alert = AlertState {
                     TextState("해당 복용 기록을 삭제하시나요?")
                 } actions: {
-                    ButtonState(action: .send(.deleteConfrimed)) {
+                    ButtonState(action: .send(.confirmDelete)) {
                         TextState("삭제")
                     }
                     ButtonState {
@@ -88,14 +90,20 @@ struct CommonDetailListReducer {
                 return .none
                 
             case .deleteConfirmed:
-                return .none
-                
-            case .alert(.presented(.deleteConfrimed)):
-                return .run { [id = state.id] send in
-                    // TODO: 삭제 성공 및 실패 케이스를 나눠야 하는 UI 를 그려야 함
-                    _ = try await database.delete(id: id)
-                    await send(.deleteConfirmed)
+                return .run { send in
+                    await self.dismiss()
                 }
+                
+            case .alert(.presented(.confirmDelete)):
+                return .run { [id = state.itemId] send in
+                    let success = try await database.delete(id: id)
+                    if success {
+                        await send(.deleteConfirmed)
+                    }
+                }
+                
+            case .deleteFailed:
+                return .none
                 
             case .alert:
                 return .none
