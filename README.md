@@ -6,9 +6,9 @@
 
 ### 진행 사항
 
-- ~~핵심 Feature 개발…~~
-- ~~TCA 에 익숙해지는 중…~~
-- 나머지 복용 리스트 기능 구현 중
+- ✅ 핵심 Feature 개발…
+- ✅ TCA 에 익숙해지는 중…
+- ✅ 나머지 복용 리스트 기능 구현 중
 - 출시
 - 테스트 코드 진행
 - 다크 모드 구현
@@ -40,7 +40,7 @@ SwiftUI 와 TCA 를 연습하고자 만든 토이 프로젝트로, 출시까지 
 ### 보완해야할 점
 - Binding 사용을 추가할 것
   (커스텀 Alert)
-- Realm 의 Thread 문제를 해결하고 Dependency 추가
+- ✅ Realm 의 Thread 문제를 해결하고 Dependency 추가 
 - Camera 의 경우 ViewModel 이 아닌 Client 로 따로 Depedency 추가 
   (이 경우, Realm 과 같이 Thread 문제를 고민하면서 해야함)
 - UseCase 와 Repository 를 Domian 에서 제대로 된 코드로 추가하기
