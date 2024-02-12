@@ -14,7 +14,8 @@ import RealmSwift
  - parameter efficacy: - 효능
  - parameter manufacturer: - (Optional) 제조 회사
  */
-struct MedicationRecord {
+struct MedicationRecord: Equatable, Hashable {
+    var _id: ObjectId
     var isTakingNow: Bool
     var reasonForMedication: String
     var startDate: Date
@@ -23,13 +24,38 @@ struct MedicationRecord {
     var manufacturer: String?
     var efficacy: String
     var sideEffects: [String]
+    var numberOfTakingPerDay: Int
+    var intervalOfTaking: Int
+    var startTimeOfDay: Date
+    /// 약과 영양제 타입 총 2가지로 나뉩니다.
+    /// enum MedicationType:
+    /// - medication
+    /// - supplements
     var medicationType: String
+}
+
+extension MedicationRecord {
+    init(from item: MedicationRecordItem) {
+        self._id = item._id
+        self.isTakingNow = item.isTakingNow
+        self.reasonForMedication = item.reasonForMedication
+        self.startDate = item.startDate
+        self.endDate = item.endDate
+        self.pillNames = Array(item.pillNames) // Convert List to Array
+        self.manufacturer = item.manufacturer
+        self.efficacy = item.efficacy
+        self.sideEffects = Array(item.sideEffects) // Convert List to Array
+        self.numberOfTakingPerDay = item.numberOfTakingPerDay
+        self.intervalOfTaking = item.intervalOfTaking
+        self.startTimeOfDay = item.startTimeOfDay
+        self.medicationType = item.medicationType
+    }
 }
 
 /**
  MedicationRecord 의 SwiftData 포맷입니다.
  */
-final class MedicationRecordItem: Object {
+final class MedicationRecordItem: Object, Identifiable {
     @Persisted var _id: ObjectId
     @Persisted var isTakingNow: Bool
     @Persisted var reasonForMedication: String
@@ -75,7 +101,7 @@ enum MedicationType {
         case .medication:
             return "med"
         case .supplements:
-            return "supl"
+            return "suppl"
         }
     }
     

@@ -18,9 +18,11 @@ struct HomeCTAButtonView: View {
                 Text(primaryText)
                     .font(.system(size: 17, weight: .heavy))
                     .foregroundStyle(.white)
-                Text(secondaryText)
-                    .font(.system(size: 11, weight: .regular))
-                    .foregroundStyle(.white)
+                if !secondaryText.isEmpty {
+                    Text(secondaryText)
+                        .font(.system(size: 11, weight: .regular))
+                        .foregroundStyle(.white)
+                }
             }
             Spacer()
             Image(systemName: "chevron.right")

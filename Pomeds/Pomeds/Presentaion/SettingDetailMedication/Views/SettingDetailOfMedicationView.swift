@@ -129,7 +129,7 @@ struct SettingDetailOfMedicationView: View {
                 Text("⚠️ 뒤로가기를 하면 모두 지워지니 주의해주세요!")
                     .font(.system(size: 13, weight: .light))
                     .padding(.bottom, 5)
-                    .foregroundStyle(.red.opacity(0.6))
+                    .foregroundStyle(.red.opacity(0.4))
                 
                 Button {
                     store.send(.startDateDidAdd(startDate))
@@ -318,7 +318,7 @@ struct ToastView: View {
             .background(toastColor.opacity(0.6))
             .foregroundColor(.white)
             .cornerRadius(20)
-            .shadow(color: .black.opacity(0.5), radius: 8)
+            .shadow(color: .gray.opacity(0.5), radius: 3)
             .padding(.bottom, 40)
     }
 }

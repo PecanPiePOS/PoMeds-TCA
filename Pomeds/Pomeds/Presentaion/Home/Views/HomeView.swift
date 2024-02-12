@@ -50,10 +50,6 @@ struct HomeView: View {
                         .frame(width: 260, height: 260)
                         .padding(.top, 40)
                     
-                    if !store.takingMedicationList.isEmpty {
-                        
-                    }
-                    
                     NavigationLink(state: HomeReducer.Path.State.registerNewMedicationScene()) {
                         HomeCTAButtonView(primaryText: "New Medication", secondaryText: "새로운 약 등록하기", backgroundColor: Color(hex: "FEC5AC"))
                             .padding(.horizontal, 15)
@@ -65,15 +61,15 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 8)
                     
-                    //                    NavigationLink(state: HomeReducer.Path.State.registerNewMedicationScene()) {
-                    HomeCTAButtonView(primaryText: "New Medication", secondaryText: "현재 복용 리스트", backgroundColor: Color(hex: "F5D0B5"))
-                        .padding(.horizontal, 15)
-                    //                    }
+                    NavigationLink(state: HomeReducer.Path.State.listOfOngoingMedicationScene()) {
+                        HomeCTAButtonView(primaryText: "New Medication", secondaryText: "현재 복용 리스트", backgroundColor: Color(hex: "F5D0B5"))
+                            .padding(.horizontal, 15)
+                    }
                     
-                    //                    NavigationLink(state: HomeReducer.Path.State.registerNewMedicationScene()) {
-                    HomeCTAButtonView(primaryText: "Medication History", secondaryText: "과거 복용 리스트", backgroundColor: Color(hex: "E0D6D3"))
-                        .padding(.horizontal, 15)
-                    //                    }
+                    NavigationLink(state: HomeReducer.Path.State.listOfPastMedicationScene()) {
+                        HomeCTAButtonView(primaryText: "Medication History", secondaryText: "과거 복용 리스트", backgroundColor: Color(hex: "E0D6D3"))
+                            .padding(.horizontal, 15)
+                    }
                     
                     Spacer()
                 }
@@ -104,20 +100,38 @@ struct HomeView: View {
                 if let store = store.scope(state: \.listOfRecognizedMedicinesScene, action: \.listOfRecognizedMedicines) {
                     ListOfRecognizedMedicineView(store: store)
                 }
-            case .settingDetailOfMedicationScene(_):
+            case .settingDetailOfMedicationScene:
                 if let store = store.scope(state: \.settingDetailOfMedicationScene, action: \.settingDetailOfMedication) {
                     SettingDetailOfMedicationView(store: store)
+                }
+            case .listOfOngoingMedicationScene:
+                if let store = store.scope(state: \.listOfOngoingMedicationScene, action: \.listOfOngoingMedication) {
+                    ListOfOngoingMedicationsView(store: store, rootStore: self.store)
+                }
+            case .listOfPastMedicationScene:
+                if let store = store.scope(state: \.listOfPastMedicationScene, action: \.listOfPastMedication) {
+                    ListOfPastMedicationsView(store: store, rootStore: self.store)
+                }
+            case .detailOfOngoingMedicationScene:
+                if let store = store.scope(state: \.detailOfOngoingMedicationScene, action: \.detailOfOngoingMedication) {
+                    CommonDetailListView(store: store)
+                }
+            case .detailOfPastMedicationScene:
+                if let store = store.scope(state: \.detailOfPastMedicationScene, action: \.detailOfPastMedication) {
+                    CommonDetailListView(store: store)
                 }
             }
         }
         .onAppear {
             store.send(.onAppear)
-            print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")
         }
         .onChange(of: store.hasSucceededRegisteringNewMeds) { _, newValue in
             if newValue == true {
                 store.send(.onAppear)
             }
+        }
+        .onDisappear {
+            print("📌📌📌📌")
         }
     }
 }
