@@ -13,50 +13,29 @@ import RealmSwift
 
 @DependencyClient
 struct MedicationDatabaseClient {
-    var fetchOngoingMeications: () async throws -> [MedicationRecordItem]
-    var fetchPastMedications: () async throws -> [MedicationRecordItem]
+    var fetchOngoingMedications: () async throws -> [MedicationRecord]
+    var fetchPastMedications: () async throws -> [MedicationRecord]
+    var fetchObjectWithId: (ObjectId) async throws -> MedicationRecord?
     var save: (_ medication: MedicationRecordItem) async throws -> Bool
     var delete: (_ id: ObjectId) async throws -> Bool
 }
 
 extension MedicationDatabaseClient: DependencyKey {
-    static var liveValue: MedicationDatabaseClient = .init(fetchOngoingMeications: {
-        let now = Date()
-        return try Realm()
-            .objects(MedicationRecordItem.self)
-            .filter { $0.endDate > now }
-            .filter { now > $0.startDate }
-    }, fetchPastMedications: {
-        let now = Date()
-        return try Realm()
-            .objects(MedicationRecordItem.self)
-            .filter { $0.endDate < now }
-    }, save: { medication in
-        do {
-        try Realm().write {
-        try Realm().add(medication)
-    }
-        return true
-    } catch {
-        print("Error saving to Realm")
-        return false
-    }
-    }, delete: { id in
-        do {
-        try Realm()
-            .objects(MedicationRecordItem.self)
-            .filter { $0._id == id }
-            .forEach { result in
-                try Realm().write {
-        try Realm().delete(result)
-    }
-            }
-        return true
-    } catch {
-        print("Error deleting from Realm")
-        return false
-    }
-    })
+    static let realm = RealmService()
+
+    static let liveValue: MedicationDatabaseClient = Self(
+        fetchOngoingMedications: {
+            return try await realm.fetchOngoingList()
+        }, fetchPastMedications: {
+            return try await realm.fetchPastList()
+        }, fetchObjectWithId: {
+            try await realm.fetchObjectWithId(id: $0)
+        }, save: {
+            try await realm.save(object: $0)
+        }, delete: {
+            try await realm.delete(id: $0)
+        }
+    )
 }
 
 extension DependencyValues {
